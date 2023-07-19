@@ -1,9 +1,19 @@
+import { useState } from 'react';
 import { Form } from 'react-router-dom';
 import SelectInput from '../../components/Input/Select';
 import Button from '../../components/Button';
 import BackButton from '../../components/BackButton';
+import TextArea from '../../components/Input/Textarea';
 
 const UpdateKnowledgeBase = () => {
+    const [subject, setSubject] = useState('');
+    const handleChange = (
+        selected: { value: string; label: string } | null
+    ) => {
+        if (selected) {
+            setSubject(selected.value);
+        }
+    };
     const subCategories = [
         { value: 'Account Opening', label: 'Account Opening' },
         { value: 'Account Closure', label: 'Account Closure' },
@@ -38,8 +48,15 @@ const UpdateKnowledgeBase = () => {
                             name="subject"
                             label="subject"
                             options={subjects}
+                            onChange={handleChange}
                             placeholder=""
                         />
+                        {subject && (
+                            <>
+                                <TextArea name={subject} label={subject} />
+                                <TextArea name="response" label="response" />
+                            </>
+                        )}
                         <div className="flex justify-between w-full py-8">
                             <Button type="submit">Submit</Button>
                             <Button type="button" color="outline">

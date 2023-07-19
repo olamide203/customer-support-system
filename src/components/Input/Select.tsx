@@ -6,9 +6,16 @@ interface SelectInputProps {
     placeholder: string;
     name: string;
     label: string;
+    onChange?: (selected: { label: string; value: string } | null) => void;
 }
 
-function SelectInput({ options, placeholder, name, label }: SelectInputProps) {
+function SelectInput({
+    options,
+    placeholder,
+    name,
+    label,
+    onChange,
+}: SelectInputProps) {
     return (
         <div className="relative grid gap-2">
             <label
@@ -21,6 +28,7 @@ function SelectInput({ options, placeholder, name, label }: SelectInputProps) {
                 options={options}
                 placeholder={placeholder}
                 name={name}
+                onChange={onChange}
                 styles={{
                     control: (provided, state) => ({
                         ...provided,
@@ -44,5 +52,7 @@ function SelectInput({ options, placeholder, name, label }: SelectInputProps) {
         </div>
     );
 }
-
+SelectInput.defaultProps = {
+    onChange: () => {},
+};
 export default SelectInput;

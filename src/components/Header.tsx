@@ -2,7 +2,7 @@ import Avatar from './Avatar';
 import Dropdown from './Dropdown';
 
 const Header = () => (
-    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[50px] py-5 items-center bg-neutral-100">
+    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[50px] py-5 items-center bg-neutral-100 z-50">
         <div className="flex gap-4 items-center">
             <img src="/logo.svg" alt="" className="h-[60px] w-[56px]" />
             <h1 className="font-sacramento text-red text-4xl font-semibold capitalize">
