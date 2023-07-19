@@ -23,5 +23,7 @@ module.exports = {
     plugins: ['react', '@typescript-eslint'],
     rules: {
         'react/react-in-jsx-scope': 0,
+        'react/function-component-definition': 0,
+        'arrow-body-style': 0,
     },
-}
+};

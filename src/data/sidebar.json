@@ -1,0 +1,57 @@
+[
+    {
+        "title": "overview",
+        "icon": "/icons/overview.svg",
+        "path": "/"
+    },
+    {
+        "title": "general",
+        "icon": "/icons/general.svg",
+        "path": "/general",
+        "children": [
+            {
+                "title": "update knowledge base",
+                "path": "update-knowledge-base"
+            },
+            {
+                "title": "view knowledge base",
+                "path": "view-knowledge-base"
+            },
+            {
+                "title": "create Sub-Category",
+                "path": "create-sub-category"
+            },
+            {
+                "title": "rename category",
+                "path": "rename-category"
+            }
+        ]
+    },
+    {
+        "title": "account",
+        "icon": "/icons/account.svg",
+        "children": [
+            {
+                "title": "update knowledge base",
+                "path": "/account/update-knowledge-base"
+            },
+            {
+                "title": "view knowledge base",
+                "path": "view-knowledge-base"
+            },
+            {
+                "title": "create Sub-Category",
+                "path": "create-sub-category"
+            },
+            {
+                "title": "rename category",
+                "path": "rename-category"
+            }
+        ]
+    },
+    {
+        "title": "add category",
+        "icon": "/icons/add-category.svg",
+        "path": "/add-category"
+    }
+]
