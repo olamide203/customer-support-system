@@ -7,11 +7,10 @@
     {
         "title": "general",
         "icon": "/icons/general.svg",
-        "path": "/general",
         "children": [
             {
                 "title": "update knowledge base",
-                "path": "update-knowledge-base"
+                "path": "/general/update-knowledge-base"
             },
             {
                 "title": "view knowledge base",

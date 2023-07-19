@@ -5,9 +5,9 @@ import BackButton from '../../components/BackButton';
 
 const UpdateKnowledgeBase = () => {
     const subCategories = [
-        { value: 'Account Opening', label: 'Account Opening' },
-        { value: 'Account Closure', label: 'Account Closure' },
-        { value: 'Dormancy', label: 'Dormancy' },
+        { value: 'login', label: 'Login' },
+        { value: 'sign up', label: 'Sign Up' },
+        { value: 'forgot password', label: 'Forgot Password' },
     ];
     const subjects = [
         { value: 'complaint', label: 'Complaint' },
@@ -25,7 +25,7 @@ const UpdateKnowledgeBase = () => {
             <div className="grid bg-white px-[150px] py-[80px] p-10 rounded-3xl w-fit mx-auto">
                 <div className="flex bg-neutral-200 items-center justify-center flex-col px-[55px] py-[34px] gap-10 w-fit">
                     <h2 className="poppins font-medium text-neutral-900/80 text-[20px]">
-                        CATEGORY: Account
+                        CATEGORY: General
                     </h2>
                     <Form className="w-[400px] grid gap-4">
                         <SelectInput

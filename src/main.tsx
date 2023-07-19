@@ -9,6 +9,7 @@ import ForgotPassword from './routes/forgot-password';
 import LoginPage from './routes/login';
 import Dashboard from './routes/dashboard';
 import UpdateAccountKnowledgeBase from './routes/account/update-knowledge-base';
+import UpdateGeneralKnowledgeBase from './routes/general/update-knowledge-base';
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,15 @@ const router = createBrowserRouter([
             {
                 element: <Dashboard />,
                 index: true,
+            },
+            {
+                path: 'general',
+                children: [
+                    {
+                        path: 'update-knowledge-base',
+                        element: <UpdateGeneralKnowledgeBase />,
+                    },
+                ],
             },
             {
                 path: 'account',
