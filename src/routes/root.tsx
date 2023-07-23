@@ -5,8 +5,8 @@ import Sidebar from '../components/Sidebar/Index';
 import useMediaQuery from '../hooks/useMediaquery';
 
 function Root() {
-    const [sidebarExpanded, setSidebarExpanded] = useState(true);
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const [sidebarExpanded, setSidebarExpanded] = useState(!isMobile);
 
     useEffect(() => {
         if (isMobile) {

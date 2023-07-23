@@ -33,10 +33,7 @@ const UpdateKnowledgeBase = () => {
                 </h1>
             </div>
             <div className="grid bg-white max-w-screen-md rounded-3xl p-4 sm:py-[80px] mx-auto w-full">
-                <div className="flex bg-white sm:bg-neutral-200 items-center justify-center flex-col gap-10 w-full sm:w-[400px] mx-auto p-2 sm:p-10">
-                    <h2 className="poppins font-medium text-neutral-900/80 text-[20px]">
-                        CATEGORY: General
-                    </h2>
+                <div className="flex bg-white sm:bg-neutral-200 items-center justify-center flex-col gap-10 w-full sm:w-[420px] mx-auto p-2 sm:p-10">
                     <Form className="w-full grid gap-4">
                         <SelectInput
                             name="subcategory"
