@@ -32,12 +32,12 @@ const UpdateKnowledgeBase = () => {
                     Update Knowledge base
                 </h1>
             </div>
-            <div className="grid bg-white lg:px-[150px] lg:py-[80px] rounded-3xl w-fit mx-auto">
-                <div className="flex bg-neutral-200 items-center justify-center flex-col lg:px-[55px] py-[34px] gap-10 w-fit">
+            <div className="grid bg-white max-w-screen-md rounded-3xl p-4 sm:py-[80px] mx-auto w-full">
+                <div className="flex bg-white sm:bg-neutral-200 items-center justify-center flex-col gap-10 w-full sm:w-[400px] mx-auto p-2 sm:p-10">
                     <h2 className="poppins font-medium text-neutral-900/80 text-[20px]">
                         CATEGORY: General
                     </h2>
-                    <Form className="w-full lg:w-[400px] grid gap-4">
+                    <Form className="w-full grid gap-4">
                         <SelectInput
                             name="subcategory"
                             label="subcategory"
