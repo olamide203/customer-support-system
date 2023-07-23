@@ -2,17 +2,23 @@ import Avatar from './Avatar';
 import Dropdown from './Dropdown';
 
 const Header = () => (
-    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[50px] py-5 items-center bg-neutral-100 z-50">
-        <div className="flex gap-4 items-center">
-            <img src="/logo.svg" alt="" className="h-[60px] w-[56px]" />
-            <h1 className="font-sacramento text-red text-4xl font-semibold capitalize">
+    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
+        <div className="flex gap-2 lg:gap-4 items-center">
+            <img
+                src="/logo.svg"
+                alt=""
+                className="h-[30px] w-[30px] lg:h-[60px] lg:w-[56px]"
+            />
+            <h1 className="font-sacramento text-red text-xl md:text-2xl lg:text-4xl font-semibold capitalize">
                 Knowledge base
             </h1>
         </div>
         <div className="grid gap-3 grid-flow-col items-center justify-center">
             <Avatar fallback="DT" image="/avatar.png" />
-            <span>Welcome,</span>
-            <Dropdown />
+            <div className="hidden md:grid grid-flow-col gap-2">
+                <span>Welcome,</span>
+                <Dropdown />
+            </div>
             <button type="button" className="relative h-full py-2">
                 <img
                     src="/notification.svg"

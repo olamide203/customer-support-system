@@ -5,48 +5,14 @@
         "path": "/"
     },
     {
-        "title": "general",
-        "icon": "/icons/general.svg",
-        "children": [
-            {
-                "title": "update knowledge base",
-                "path": "/general/update-knowledge-base"
-            },
-            {
-                "title": "view knowledge base",
-                "path": "view-knowledge-base"
-            },
-            {
-                "title": "create Sub-Category",
-                "path": "create-sub-category"
-            },
-            {
-                "title": "rename category",
-                "path": "rename-category"
-            }
-        ]
+        "title": "knowledge base",
+        "icon": "/icons/knowledge-base.svg",
+        "path": "/knowledge-base"
     },
     {
-        "title": "account",
-        "icon": "/icons/account.svg",
-        "children": [
-            {
-                "title": "update knowledge base",
-                "path": "/account/update-knowledge-base"
-            },
-            {
-                "title": "view knowledge base",
-                "path": "view-knowledge-base"
-            },
-            {
-                "title": "create Sub-Category",
-                "path": "create-sub-category"
-            },
-            {
-                "title": "rename category",
-                "path": "rename-category"
-            }
-        ]
+        "title": "update knowledge base",
+        "icon": "/icons/update.svg",
+        "path": "/update-knowledge-base"
     },
     {
         "title": "add category",

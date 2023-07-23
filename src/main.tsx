@@ -20,15 +20,12 @@ const router = createBrowserRouter([
                 element: <Dashboard />,
                 index: true,
             },
+
             {
-                path: 'general',
-                children: [
-                    {
-                        path: 'update-knowledge-base',
-                        element: <UpdateGeneralKnowledgeBase />,
-                    },
-                ],
+                path: 'update-knowledge-base',
+                element: <UpdateGeneralKnowledgeBase />,
             },
+
             {
                 path: 'account',
                 children: [

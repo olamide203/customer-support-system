@@ -4,15 +4,16 @@ import { RxChevronUp } from 'react-icons/rx';
 
 export interface ItemProps {
     title: string;
-    path?: string;
+    path: string;
     icon?: string;
     children?: ItemProps[];
 }
 interface SidebarItemProps {
     item: ItemProps;
+    sidebarExpanded: boolean;
 }
 
-const SidebarItem = ({ item }: SidebarItemProps) => {
+const SidebarItem = ({ item, sidebarExpanded }: SidebarItemProps) => {
     const [isExpanded, setIsExpanded] = useState(false);
     // toggle sidebar item
     const toggleMenu = () => {
@@ -22,21 +23,26 @@ const SidebarItem = ({ item }: SidebarItemProps) => {
         <>
             {!item.children && (
                 <NavLink
-                    to={item.path || ''}
+                    to={item.path}
                     className={({ isActive }) =>
-                        `w-full transition-all grid grid-cols-auto grid-flow-col items-center justify-start h-12 gap-x-2 px-4 cursor-pointer hover:bg-sky-600 overflow-x-hidden ${
-                            isActive ? 'bg-blue-400' : ''
+                        `w-full transition-all grid grid-cols-auto grid-flow-col items-center h-12 px-2 sm:px-3 gap-x-2 cursor-pointer hover:bg-sky-600 overflow-x-hidden ${
+                            isActive ? 'bg-blue-200' : ''
+                        } ${
+                            sidebarExpanded
+                                ? 'justify-start'
+                                : 'justify-items-center'
                         }`
                     }
                 >
                     <img src={item.icon} alt="" />
-
-                    <span className="justify-self-start self-center text-sm font-semibold capitalize whitespace-nowrap">
-                        {item.title}
-                    </span>
+                    {sidebarExpanded && (
+                        <span className="justify-self-start self-center text-sm font-semibold capitalize whitespace-nowrap">
+                            {item.title}
+                        </span>
+                    )}
                 </NavLink>
             )}
-            {item.children && (
+            {sidebarExpanded && item.children && (
                 <div
                     className={`w-full transition-all grid gap-x-2 cursor-pointer border-4 border-blue-400 overflow-x-hidden  ${
                         isExpanded ? 'bg-blue-100' : ''
@@ -48,6 +54,7 @@ const SidebarItem = ({ item }: SidebarItemProps) => {
                         type="button"
                     >
                         <img src={item.icon} alt="" />
+
                         {item.title}
                         <RxChevronUp
                             className={`inline text-xl justify-self-end ${
@@ -60,6 +67,7 @@ const SidebarItem = ({ item }: SidebarItemProps) => {
                             <SidebarItem
                                 item={childItem}
                                 key={childItem.title}
+                                sidebarExpanded={sidebarExpanded}
                             />
                         ))}
                     </div>

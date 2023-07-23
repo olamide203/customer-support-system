@@ -39,6 +39,14 @@ export const {
             marginLeft: value,
             marginRight: value,
         }),
+        paddingX: (value: string | number) => ({
+            paddingLeft: value,
+            paddingRight: value,
+        }),
+        paddingY: (value: string | number) => ({
+            paddingTop: value,
+            paddingBottom: value,
+        }),
         bg: (value: string | number) => ({ backgroundColor: value }),
     },
 });

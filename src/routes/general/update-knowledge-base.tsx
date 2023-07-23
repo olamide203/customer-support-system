@@ -25,19 +25,19 @@ const UpdateKnowledgeBase = () => {
         { value: 'request', label: 'Request' },
     ];
     return (
-        <div className="p-10 flex flex-col gap-8">
+        <div className="sm:p-10 p-3 flex flex-col gap-8">
             <div className="flex gap-3">
                 <BackButton />
-                <h1 className="font-poppins font-semibold text-neutral-900/80 text-[24px]">
+                <h1 className="font-poppins font-semibold text-neutral-900/80 text-[16px]sm:text-[24px]">
                     Update Knowledge base
                 </h1>
             </div>
-            <div className="grid bg-white px-[150px] py-[80px] p-10 rounded-3xl w-fit mx-auto">
-                <div className="flex bg-neutral-200 items-center justify-center flex-col px-[55px] py-[34px] gap-10 w-fit">
+            <div className="grid bg-white lg:px-[150px] lg:py-[80px] lg:p-10 rounded-3xl w-fit mx-auto">
+                <div className="flex bg-neutral-200 items-center justify-center flex-col lg:px-[55px] py-[34px] gap-10 w-fit">
                     <h2 className="poppins font-medium text-neutral-900/80 text-[20px]">
                         CATEGORY: General
                     </h2>
-                    <Form className="w-[400px] grid gap-4">
+                    <Form className="w-full lg:w-[400px] grid gap-4">
                         <SelectInput
                             name="subcategory"
                             label="subcategory"

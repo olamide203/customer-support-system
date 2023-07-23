@@ -1,5 +1,4 @@
-import Card, { type StyledDivVariants } from '../components/Dashboard/Card';
-import Button from '../components/Button';
+import Card from '../components/Dashboard/Card';
 import accounts from '../data/accounts';
 
 const Dashboard = () => {
@@ -8,7 +7,7 @@ const Dashboard = () => {
             <h1 className="font-poppins font-semibold text-2xl text-neutral-900">
                 Home
             </h1>
-            <div className="grid grid-cols-2 gap-8 py-[45px]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-[45px] items-center justify-center justify-items-center">
                 {accounts.map((account) => (
                     <Card
                         name={account.name}

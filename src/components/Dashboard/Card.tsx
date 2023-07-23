@@ -3,22 +3,17 @@ import { styled } from '../../../stitches.config';
 import Button from '../Button';
 
 const StyledDiv = styled('div', {
-    Width: '320px',
-    height: '290px',
+    width: '100%',
+    height: '100%',
+    maxWidth: '500px',
+    paddingX: '20px',
+    paddingY: '56px',
     borderRadius: '30px',
     backgroundColor: '$neutral100',
-    borderLeft: '10px solid $blue400',
+    borderLeft: '30px solid $blue400',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    '@bp1': {
-        width: '320px',
-        borderLeft: '20px solid',
-    },
-    '@bp2': {
-        width: '481px',
-        borderLeft: '30px solid',
-    },
     variants: {
         color: {
             blue200: {
@@ -42,10 +37,13 @@ const StyledDiv = styled('div', {
 
 const StyledHeading = styled('h2', {
     color: '$neutral900',
-    fontSize: '32px',
     fontWeight: 'bold',
+    fontSize: '24px',
     fontFamily: 'Poppins, sans-serif',
     textTransform: 'uppercase',
+    '@bp1': {
+        fontSize: '32px',
+    },
     variants: {
         color: {
             blue200: {
@@ -83,8 +81,10 @@ const Card = ({ name, stats, icon, color }: CardProps) => {
                 <img src={icon} alt="" />
                 <StyledHeading color={color}>{name}</StyledHeading>
                 <div className="grid items-center justify-center text-neutral-900/80">
-                    <h3 className="font-bold text-4xl text-center">{stats}</h3>
-                    <p className="text-xl font-semibold text-center capitalize">
+                    <h3 className="font-bold text-2xl sm:text-4xl text-center">
+                        {stats}
+                    </h3>
+                    <p className=" text-lg sm:text-xl font-semibold text-center capitalize">
                         chats
                     </p>
                 </div>
