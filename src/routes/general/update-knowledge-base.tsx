@@ -25,14 +25,14 @@ const UpdateKnowledgeBase = () => {
         { value: 'request', label: 'Request' },
     ];
     return (
-        <div className="sm:p-10 p-3 flex flex-col gap-8">
+        <div className="md:p-10 p-3 flex flex-col gap-8">
             <div className="flex gap-3">
                 <BackButton />
                 <h1 className="font-poppins font-semibold text-neutral-900/80 text-[16px]sm:text-[24px]">
                     Update Knowledge base
                 </h1>
             </div>
-            <div className="grid bg-white lg:px-[150px] lg:py-[80px] lg:p-10 rounded-3xl w-fit mx-auto">
+            <div className="grid bg-white lg:px-[150px] lg:py-[80px] rounded-3xl w-fit mx-auto">
                 <div className="flex bg-neutral-200 items-center justify-center flex-col lg:px-[55px] py-[34px] gap-10 w-fit">
                     <h2 className="poppins font-medium text-neutral-900/80 text-[20px]">
                         CATEGORY: General
