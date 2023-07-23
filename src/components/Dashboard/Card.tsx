@@ -8,12 +8,16 @@ const StyledDiv = styled('div', {
     maxWidth: '500px',
     paddingX: '20px',
     paddingY: '56px',
-    borderRadius: '30px',
+    borderRadius: '20px',
     backgroundColor: '$neutral100',
-    borderLeft: '30px solid $blue400',
+    borderLeft: '20px solid $blue400',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    '@bp1': {
+        borderLeft: '30px solid',
+        borderRadius: '30px',
+    },
     variants: {
         color: {
             blue200: {
