@@ -8,8 +8,8 @@ import ResetPassword from './routes/reset-password';
 import ForgotPassword from './routes/forgot-password';
 import LoginPage from './routes/login';
 import Dashboard from './routes/dashboard';
-import UpdateAccountKnowledgeBase from './routes/account/update-knowledge-base';
 import UpdateGeneralKnowledgeBase from './routes/general/update-knowledge-base';
+import KnowledgeBasePage from './routes/knowledge-base';
 
 const router = createBrowserRouter([
     {
@@ -27,13 +27,8 @@ const router = createBrowserRouter([
             },
 
             {
-                path: 'account',
-                children: [
-                    {
-                        path: 'update-knowledge-base',
-                        element: <UpdateAccountKnowledgeBase />,
-                    },
-                ],
+                path: 'knowledge-base',
+                element: <KnowledgeBasePage />,
             },
         ],
     },
