@@ -1,21 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { BsDot } from 'react-icons/bs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import CopiedToast from './CopiedToast';
+import CopiedToast from '../../../components/KowledgeBase/CopiedToast';
+import complaints from '../../../data/complaints.json';
 
-interface KnowledgeBaseItemProps {
-    id: number;
-    title: string;
-    description: string;
-    created_at: string;
-}
+const SingleComplaint = () => {
+    const { id, title, description } = complaints[0];
 
-const KnowledgeBaeItem = ({
-    id,
-    title,
-    description,
-    created_at,
-}: KnowledgeBaseItemProps) => {
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
 
@@ -29,17 +20,19 @@ const KnowledgeBaeItem = ({
             setOpen(true);
         }, 100);
     };
-    const dateString = new Date(created_at).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-    });
+    const toDateString = (date: string) => {
+        return new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+        });
+    };
     return (
-        <div className="grid gap-3">
+        <div className="mx-auto w-full max-w-[888px] rounded-[30px] bg-white h-full p-10 flex gap-5 flex-col">
             <div className="flex flex-row justify-between">
-                <h2 className="font-poppins font-bold text-[14px] text-neutral-800">
+                <h2 className="font-poppins font-bold text-[20px] text-neutral-800">
                     {title}
                 </h2>
                 <div className="flex flex-row gap-2">
@@ -70,20 +63,24 @@ const KnowledgeBaeItem = ({
                     </button>
                 </div>
             </div>
-            <p className="font-poppins text-xs text-neutral-400">
-                {description}{' '}
-                <Link
-                    to={`/knowledge-base/complaints/${id}`}
-                    className="font-bold text-neutral-800 px-2"
+            {complaints.map((complaint) => (
+                <div
+                    className="grid grid-cols-[auto_1fr] gap-5"
+                    key={complaint.id}
                 >
-                    See more
-                </Link>
-            </p>
-            <p className="italic text-[14px] font-semibold text-neutral-400">
-                {dateString}
-            </p>
+                    <BsDot />
+                    <div className="grid gap-1">
+                        <p className="font-poppins text-base text-neutral-400">
+                            {complaint.description}
+                        </p>
+                        <p className="italic text-[14px] font-semibold text-neutral-400">
+                            {toDateString(complaint.created_at)}
+                        </p>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };
 
-export default KnowledgeBaeItem;
+export default SingleComplaint;

@@ -1,5 +1,6 @@
 import Avatar from './Avatar';
 import Dropdown from './Dropdown';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => (
     <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
@@ -19,16 +20,28 @@ const Header = () => (
                 <span>Welcome,</span>
                 <Dropdown />
             </div>
-            <button type="button" className="relative h-full py-2">
-                <img
-                    src="/notification.svg"
-                    alt=""
-                    className="h-full object-contain"
-                />
-                <span className="absolute text-white -top-1 -right-6 bg-orange rounded-full p-3 font-bold h-[6px] flex items-center justify-center font-poppins">
-                    31
-                </span>
-            </button>
+            <NavLink
+                to="/notifications"
+                type="button"
+                className="relative h-full py-2"
+            >
+                {({ isActive }) => (
+                    <>
+                        <img
+                            src="/notification.svg"
+                            alt=""
+                            className="h-full object-contain"
+                        />
+                        <span
+                            className={`absolute text-white -top-1 -right-6 bg-orange rounded-full p-3 font-bold h-[6px] flex items-center justify-center font-poppins ${
+                                isActive ? 'hidden' : 'block'
+                            }`}
+                        >
+                            31
+                        </span>
+                    </>
+                )}
+            </NavLink>
         </div>
     </header>
 );
