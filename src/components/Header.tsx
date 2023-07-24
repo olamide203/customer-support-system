@@ -1,6 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import Avatar from './Avatar';
 import Dropdown from './Dropdown';
-import { NavLink } from 'react-router-dom';
 
 const Header = () => (
     <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
