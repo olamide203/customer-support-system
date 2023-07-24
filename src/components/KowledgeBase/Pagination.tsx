@@ -6,7 +6,7 @@ interface PaginationProps {
     pageCount: number;
     currentPage: number;
     perPage: number;
-    onChangeItemsPerPage: ({ value }: { value: number }) => void;
+    onChangeItemsPerPage: (selected: { value: string } | null) => void;
     totalItems: number;
 }
 

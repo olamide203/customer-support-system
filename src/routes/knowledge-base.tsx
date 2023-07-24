@@ -35,8 +35,10 @@ const KnowledgeBasePage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    const changeItemsPerPage = ({ value }: { value: number }) => {
-        setItemsPerPage(value);
+    const changeItemsPerPage = (selected: { value: number } | null) => {
+        if (selected) {
+            setItemsPerPage(selected.value);
+        }
     };
     const handlePageChange = (selectedItem: { selected: number }) => {
         setCurrentPage(selectedItem.selected + 1);
