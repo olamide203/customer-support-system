@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SearchInput = () => {
     return (
         <div className="relative w-full grid grid-cols-1 grid-rows-1">
