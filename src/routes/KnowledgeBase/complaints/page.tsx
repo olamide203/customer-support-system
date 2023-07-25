@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Root as Separator } from '@radix-ui/react-separator';
-import Pagination from '../../../components/KowledgeBase/Pagination';
-import KnowledgeBaeItem from '../../../components/KowledgeBase/Item';
+import Pagination from '../../../components/KnowledgeBase/Pagination';
+import KnowledgeBaeItem from '../../../components/KnowledgeBase/Item';
 import complaints from '../../../data/complaints.json';
 
 const ComplaintsPage = () => {

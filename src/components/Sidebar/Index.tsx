@@ -11,7 +11,7 @@ interface SidebarProps {
 function Sidebar({ sidebarExpanded, toggleSidebar }: SidebarProps) {
     return (
         <motion.div
-            className={`fixed left-0 min-h-screen mx-0 flex flex-col bg-blue-400 text-white shadow-xl transition-all duration-300 `}
+            className={`fixed left-0 min-h-screen mx-0 flex flex-col bg-blue-400 text-white shadow-xl transition-all duration-300 z-[100] `}
             layout
             style={{ width: sidebarExpanded ? '276px' : '64px' }}
         >

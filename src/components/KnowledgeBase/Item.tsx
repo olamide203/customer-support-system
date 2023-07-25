@@ -58,16 +58,6 @@ const KnowledgeBaeItem = ({
                             </button>
                         </CopyToClipboard>
                     </CopiedToast>
-                    <button
-                        type="button"
-                        className="grid items-center justify-center aspect-square rounded active:bg-blue-200 bg-blue-100 h-[35px] w-[35px] border border-[#CCC]"
-                    >
-                        <img
-                            src="/icons/share.svg"
-                            alt=""
-                            className="h-[25px] object-contain"
-                        />
-                    </button>
                 </div>
             </div>
             <p className="font-poppins text-xs text-neutral-400">

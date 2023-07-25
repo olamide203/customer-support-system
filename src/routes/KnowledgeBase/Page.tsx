@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { Root as Separator } from '@radix-ui/react-separator';
-import SearchIniput from '../../components/KowledgeBase/SearchInput';
-import CategorySelect from '../../components/KowledgeBase/CategorySelect';
-import NavMenu from '../../components/KowledgeBase/NavMenu';
+import SearchIniput from '../../components/KnowledgeBase/SearchInput';
+import CategorySelect from '../../components/KnowledgeBase/CategorySelect';
+import NavMenu from '../../components/KnowledgeBase/NavMenu';
 
 const catgegories = [
     {

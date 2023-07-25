@@ -14,7 +14,7 @@ const UpdateKnowledgeBase = () => {
             setSubject(selected.value);
         }
     };
-    const subCategories = [
+    const categories = [
         { value: 'login', label: 'Login' },
         { value: 'sign up', label: 'Sign Up' },
         { value: 'forgot password', label: 'Forgot Password' },
@@ -36,9 +36,9 @@ const UpdateKnowledgeBase = () => {
                 <div className="flex bg-white sm:bg-neutral-200 items-center justify-center flex-col gap-10 w-full sm:w-[420px] mx-auto sm:p-10">
                     <Form className="w-full grid gap-4">
                         <SelectInput
-                            name="subcategory"
-                            label="subcategory"
-                            options={subCategories}
+                            name="category"
+                            label="category"
+                            options={Categories}
                             placeholder=""
                         />
                         <SelectInput
@@ -55,10 +55,7 @@ const UpdateKnowledgeBase = () => {
                             </>
                         )}
                         <div className="flex justify-between w-full py-8">
-                            <Button type="submit">Submit</Button>
-                            <Button type="button" color="outline">
-                                Submit
-                            </Button>
+                            <Button type="submit">update</Button>
                         </div>
                     </Form>
                 </div>

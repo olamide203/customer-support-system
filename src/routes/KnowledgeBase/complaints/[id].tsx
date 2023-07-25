@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { BsDot } from 'react-icons/bs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import CopiedToast from '../../../components/KowledgeBase/CopiedToast';
+import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
 import complaints from '../../../data/complaints.json';
 
 const SingleComplaint = () => {
@@ -51,16 +51,6 @@ const SingleComplaint = () => {
                             </button>
                         </CopyToClipboard>
                     </CopiedToast>
-                    <button
-                        type="button"
-                        className="grid items-center justify-center aspect-square rounded active:bg-blue-200 bg-blue-100 h-[35px] w-[35px] border border-[#CCC]"
-                    >
-                        <img
-                            src="/icons/share.svg"
-                            alt=""
-                            className="h-[25px] object-contain"
-                        />
-                    </button>
                 </div>
             </div>
             {complaints.map((complaint) => (
