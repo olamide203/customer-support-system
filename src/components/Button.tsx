@@ -44,6 +44,11 @@ const Button = styled('button', {
             pink: {
                 backgroundColor: '$pink',
             },
+            adminYellow100: {
+                backgroundColor: "$yellow100",
+                color: "#000",
+                fontSize: '14px'
+            },
             outline: {
                 backgroundColor: 'transparent',
                 border: '2px solid $blue400',

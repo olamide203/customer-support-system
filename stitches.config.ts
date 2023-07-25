@@ -27,6 +27,7 @@ export const {
             red: '#DB0A40',
             pink: '#C837AB',
             orange: '#FA3004',
+            yellow100: '#F4EBAB',
         },
     },
     media: {

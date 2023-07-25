@@ -1,7 +1,10 @@
 import Avatar from './Avatar';
 import Dropdown from './Dropdown';
 
-const Header = ({ isAdminHeader }) => (
+interface Props {
+    isAdmin: boolean
+}
+const Header = ({ isAdmin }: Props) => (
     <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
         <div className="flex gap-2 lg:gap-4 items-center">
             <img
@@ -15,26 +18,16 @@ const Header = ({ isAdminHeader }) => (
         </div>
         <div className="grid gap-3 grid-flow-col items-center justify-center">
             <Avatar fallback="DT" image="/avatar.png" />
-
-            {isAdminHeader ? (
-                <div className="inline-flex flex-col items-center gap-9">
-                    <span>Welcome,</span>
-                    <Dropdown />
-
-                    <label className="flex py-2 px-6 justify-end items-end gap-10 rounded-md bg-blue-900 text-white">
-                        <span className='"text-white font-poppins font-medium text-sm"'>
-                            Admin
-                        </span>
-                    </label>
-                </div>
-            ) : (
+            <div className="flex flex-col gap-2 items-center">
                 <div className="hidden md:grid grid-flow-col gap-2">
                     <span>Welcome,</span>
                     <Dropdown />
                 </div>
-            )}
-
-            <button type="button" className="relative h-full py-2">
+                {isAdmin && <label className="flex w-[100px] mb-2  py-2 justify-center rounded-md bg-blue-900 text-white font-poppins font-medium text-sm">
+                    Admin
+                </label>}
+            </div>
+            <button type="button" className="relative h-[50px] py-2">
                 <img
                     src="/notification.svg"
                     alt=""
@@ -44,7 +37,7 @@ const Header = ({ isAdminHeader }) => (
                     31
                 </span>
             </button>
-        </div>
+            </div>
     </header>
 );
 

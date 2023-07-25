@@ -10,8 +10,8 @@ import LoginPage from './routes/login';
 import Dashboard from './routes/dashboard';
 import UpdateGeneralKnowledgeBase from './routes/general/update-knowledge-base';
 import KnowledgeBasePage from './routes/knowledge-base';
-import AdminDashboard from './routes/admin-dashboard';
-import AdminNotification from './routes/admin-notification';
+import AdminDashboard from './routes/admin/admin-dashboard';
+import AdminNotification from './routes/admin/admin-notification';
 
 const router = createBrowserRouter([
     {
