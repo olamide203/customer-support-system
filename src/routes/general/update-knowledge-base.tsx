@@ -38,7 +38,7 @@ const UpdateKnowledgeBase = () => {
                         <SelectInput
                             name="category"
                             label="category"
-                            options={Categories}
+                            options={categories}
                             placeholder=""
                         />
                         <SelectInput
