@@ -49,6 +49,13 @@ const Button = styled('button', {
                 border: '2px solid $blue400',
                 color: '$blue400',
             },
+            admin: {
+                // New "admin" variant
+                color: '#FFF',
+                fontSize: '12px',
+                fontWeight: 500,
+                lineHeight: 'normal',
+            },
         },
     },
     defaultVariants: {
