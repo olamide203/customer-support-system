@@ -14,7 +14,7 @@ const NotificationsPage = () => {
                     Notifications
                 </h1>
             </div>
-            <div className="md:p-10 p-3 grid grid-rows-[auto_auto_1fr] gap-10 font-poppins h-full overflow-x-auto mt-[75px]">
+            <div className="p-10 grid grid-rows-[auto_auto_1fr] gap-10 font-poppins h-full overflow-x-auto mt-[75px]">
                 <div className="flex flex-row items-center justify-end max-w-[880px] mx-auto w-full gap-[30px]">
                     <NotificationFilter />
                     <div className="flex flex-row items-center justify-end gap-2">
