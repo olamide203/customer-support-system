@@ -17,7 +17,7 @@ interface DialogProps {
 }
 
 const Dialog = ({ children }: DialogProps) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const toggleOpen = () => setOpen((prev) => !prev);
     const closeDialog = () => setOpen(false);
     return (
