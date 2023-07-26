@@ -39,7 +39,7 @@ const UpdateKnowledgeBase = () => {
                     layout
                     className="flex bg-neutral-200 px-[55px] py-[34px] items-center justify-center flex-col gap-10 w-full max-w-[510px] mx-auto"
                 >
-                    <Form className="w-full grid gap-4 min-w-[300px]">
+                    <form className="w-full grid gap-4 min-w-[300px]">
                         <SelectInput
                             name="category"
                             label="category"
@@ -84,7 +84,7 @@ const UpdateKnowledgeBase = () => {
                                 <Button type="submit">update</Button>
                             </ConfirmationDialog>
                         </div>
-                    </Form>
+                    </form>
                 </motion.div>
             </div>
         </div>

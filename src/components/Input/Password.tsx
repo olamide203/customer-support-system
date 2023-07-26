@@ -5,12 +5,19 @@ interface PasswordInputProps {
     name: string;
     label: string;
     placeholder?: string;
+    onChange?: any;
 }
 
-function PasswordInput({ name, label, placeholder }: PasswordInputProps) {
+function PasswordInput({
+    name,
+    label,
+    placeholder,
+    onChange,
+}: PasswordInputProps) {
     const [value, setValue] = useState('');
     const [isPassword, setIsPassword] = useState(true);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(e.target.value);
         setValue(e.target.value);
     };
     // hide or show password

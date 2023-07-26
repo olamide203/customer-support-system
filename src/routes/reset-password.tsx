@@ -22,7 +22,7 @@ const ResetPasswordPage = () => {
                         <h2 className="font-poppins font-bold text-2xl self-start text-neutral-800">
                             Reset <br /> Password
                         </h2>
-                        <Form className="flex flex-col gap-8">
+                        <form className="flex flex-col gap-8">
                             <PasswordInput label="password" name="password" />
                             <PasswordInput label="confirm password" name="" />
                             <div className="flex justify-center">
@@ -34,7 +34,7 @@ const ResetPasswordPage = () => {
                                     reset password
                                 </Button>
                             </div>
-                        </Form>
+                        </form>
                     </div>
                 </div>
             </div>
