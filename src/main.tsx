@@ -17,6 +17,7 @@ import SingleComplaint from './routes/KnowledgeBase/complaints/[id]';
 import NotificationsPage from './routes/notifications';
 import AdminDashboard from './routes/admin/admin-dashboard';
 import AdminNotification from './routes/admin/admin-notification';
+import AdminRequest from './routes/admin/admin-request';
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
     {
         path: '/admin-notification',
         element: <AdminNotification />,
+    },
+    {
+        path: '/admin-request',
+        element: <AdminRequest />,
     },
 ]);
 
