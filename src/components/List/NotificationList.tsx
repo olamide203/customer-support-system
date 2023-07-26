@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
+
 interface Props {
     message: string;
     time: string;
     link: string;
+    route: string;
 }
 
-const NotificationList = ({ message, time, link }: Props) => {
+const NotificationList = ({ message, time, link, route }: Props) => {
     return (
         <div className="flex gap-3">
             <div className="bg-blue-100 font-bold  flex justify-center items-center w-[50px] h-[50px] rounded-full">
@@ -16,9 +19,12 @@ const NotificationList = ({ message, time, link }: Props) => {
                 </span>
                 <div className="flex justify-between">
                     <span className="font-poppins text-sm">{time}</span>
-                    <a className="text-blue-400 text-sm font-poppins italic underline">
+                    <Link
+                        to={route}
+                        className="text-blue-400 text-sm font-poppins italic underline"
+                    >
                         {link}
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

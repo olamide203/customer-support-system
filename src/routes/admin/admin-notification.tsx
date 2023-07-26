@@ -35,32 +35,15 @@ const AdminNotification = () => {
                         <DateInput label="To:" name="to" />
                     </div>
                 </div>
-                {/* <div className="flex gap-4 font-poppins items-center justify-end">
-                    <span className="font-semibold">Filter By:</span>
-                    <select className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent">
-                        <option>Last 7 days</option>
-                        <option>Last month</option>
-                    </select>
-                    <div className="flex gap-2 items-center">
-                        <span className="font-semibold">Date Range:</span>
-                        <span>From</span>
-                        <input
-                            className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent"
-                            type="date"
-                        />
-                        <span>To</span>
-                        <input
-                            className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent"
-                            type="date"
-                        />
-                    </div>
-                </div> */}
+
                 <div className="flex rounded flex-col items-center rounded-[20px] gap-6 bg-neutral-100  mt-[30px] p-[50px]">
                     {new Array(20).fill('').map(() => (
                         <NotificationList
                             message="Admin Joke Silver approved your update request to the knowledge base blabaajabbabababbabbaabbj"
                             time="3 hours ago"
                             link="Goto Knowledge base"
+                            route="/admin/knowledge-base"
+                            key={Math.random()}
                         />
                     ))}
                 </div>

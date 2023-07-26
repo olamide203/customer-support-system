@@ -15,9 +15,11 @@ import KnowledgeBaseLayout from './routes/KnowledgeBase/Layout';
 import ComplaintsPage from './routes/KnowledgeBase/complaints/page';
 import SingleComplaint from './routes/KnowledgeBase/complaints/[id]';
 import NotificationsPage from './routes/notifications';
+import AdminLayout from './routes/admin/layout';
+import AdminKnowledgeBaseLayout from './routes/admin/knowledgeBase/layout';
 import AdminDashboard from './routes/admin/admin-dashboard';
 import AdminNotification from './routes/admin/admin-notification';
-import AdminRequest from './routes/admin/admin-request';
+import ViewRequestDialog from './routes/admin/view-request-dialog';
 
 const router = createBrowserRouter([
     {
@@ -81,6 +83,40 @@ const router = createBrowserRouter([
         element: <LoginPage />,
     },
     {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                path: 'dashboard',
+                element: <AdminDashboard />,
+            },
+            {
+                path: 'notifications',
+                element: <NotificationsPage />,
+            },
+            {
+                path: 'knowledge-base',
+                element: <AdminKnowledgeBaseLayout />,
+                children: [
+                    {
+                        path: '',
+                        element: <KnowledgeBasePage />,
+                        children: [
+                            {
+                                element: <ComplaintsPage />,
+                                index: true,
+                            },
+                            {
+                                element: <ComplaintsPage />,
+                                path: 'complaints',
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    {
         path: '/admin-dashboard',
         element: <AdminDashboard />,
     },
@@ -88,9 +124,10 @@ const router = createBrowserRouter([
         path: '/admin-notification',
         element: <AdminNotification />,
     },
+
     {
-        path: '/admin-request',
-        element: <AdminRequest />,
+        path: '/view-request-dialog',
+        element: <ViewRequestDialog />,
     },
 ]);
 
