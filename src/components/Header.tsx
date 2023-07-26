@@ -3,7 +3,7 @@ import Avatar from './Avatar';
 import Dropdown from './Dropdown';
 
 interface Props {
-    isAdmin: boolean;
+    isAdmin?: boolean;
 }
 const Header = ({ isAdmin }: Props) => (
     <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
@@ -26,9 +26,9 @@ const Header = ({ isAdmin }: Props) => (
                     <Dropdown />
                 </div>
                 {isAdmin && (
-                    <label className="flex w-[100px] mb-2  py-2 justify-center rounded-md bg-blue-900 text-white font-poppins font-medium text-sm">
+                    <span className="flex w-[100px] mb-2  py-2 justify-center rounded-md bg-blue-900 text-white font-poppins font-medium text-sm">
                         Admin
-                    </label>
+                    </span>
                 )}
             </div>
 
@@ -57,5 +57,9 @@ const Header = ({ isAdmin }: Props) => (
         </div>
     </header>
 );
+
+Header.defaultProps = {
+    isAdmin: false,
+};
 
 export default Header;
