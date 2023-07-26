@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Root as AspectRatio } from '@radix-ui/react-aspect-ratio';
 import Button from '../../components/Button';
 import InfoText from '../../components/Text/InfoText';
+import LogOut from '../../helpers/Logout';
 
 const AdminDashboard = () => {
     return (
@@ -45,7 +46,7 @@ const AdminDashboard = () => {
                                 <div className="absolute -bottom-8 left-20 w-[17vw] h-0.5 bg-red" />
                             </Button>
                         </Link>
-                        <Button className="relative" color="adminYellow100">
+                        <Button className="relative" color="adminYellow100" onClick={() => LogOut()}>
                             LOGOUT
                         </Button>
                     </div>

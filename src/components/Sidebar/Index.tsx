@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import SidebarItem, { ItemProps } from './Item';
 import data from '../../data/sidebar.json';
+import LogOut from '../../helpers/Logout';
 
 interface SidebarProps {
     sidebarExpanded: boolean;
@@ -38,6 +39,7 @@ function Sidebar({ sidebarExpanded, toggleSidebar }: SidebarProps) {
                             ? 'justify-start'
                             : 'justify-items-center'
                     }`}
+                    onClick={() => LogOut()}
                 >
                     <img src="/icons/logout.svg" alt="" />
                     {sidebarExpanded && (

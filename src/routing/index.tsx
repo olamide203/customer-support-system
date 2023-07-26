@@ -29,12 +29,6 @@ import ViewRequestDialog from '../routes/admin/view-request-dialog';
 import AdminLayout from '../routes/admin/layout';
 import AdminKnowledgeBaseLayout from '../routes/admin/knowledgeBase/layout';
 
-
-
-
-
-
-
 const NotFound = () => {
     return (
         <div>
@@ -43,12 +37,12 @@ const NotFound = () => {
         </div>
     );
 };
-  
+
 const Routes = () => {
     return (
         <Switch>
             {/* element={<PrivateRoutes />} */}
-            <Route >
+            <Route element={<PrivateRoutes />}>
                 <Route element={<Root />}>
                     <Route path="/" element={<Dashboard />} />
                     <Route
