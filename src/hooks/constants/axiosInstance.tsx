@@ -21,8 +21,8 @@ const token: string | null = localStorage.getItem('token');
 const config: AxiosRequestConfig = { baseURL: baseUrl };
 const axiosInstance = axios.create(config);
 
-if (token) {
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+if (getToken()) {
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${getToken()}`;
 }
 axiosInstance.interceptors.response.use(
     (response) => {

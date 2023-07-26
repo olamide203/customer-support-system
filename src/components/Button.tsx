@@ -39,6 +39,9 @@ const Button = styled('button', {
 
             disabled: {
                 backgroundColor: '#999999',
+                '&:hover': {
+                    backgroundColor: '#999999',
+                },
             },
             blue300: {
                 backgroundColor: '$blue300',
