@@ -31,11 +31,12 @@ const LoginPage = () => {
 
             mutate(values, {
                 onSuccess(res: any) {
-                    console.log(res);
-
-                    //saveToken(res);
-
-                    navigate('/admin', { replace: true });
+                    saveToken(res.id_token);
+                    if (values.username.toLowerCase() === 'admin') {
+                        navigate('/admin', { replace: true });
+                    } else if (values.username.toLowerCase() === 'user') {
+                        navigate('/', { replace: true });
+                    }
                 },
             });
         },

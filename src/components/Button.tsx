@@ -10,6 +10,7 @@ const Button = styled('button', {
     width: 'fit-content',
     height: 'fit-content',
     wordBreak: 'keep-all',
+    whiteSpace: 'nowrap',
     fontFamily: 'Poppins, sans-serif',
     cursor: 'pointer',
     transition: 'all 0.2s ease-in-out',

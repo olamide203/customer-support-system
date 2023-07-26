@@ -10,7 +10,7 @@ const CreateUserPage = () => {
             <div className="h-fit my-auto w-full max-w-screen-lg grid grid-cols-12 rounded-[30px] lg:border-[3px] lg:border-blue-400 overflow-hidden">
                 <div className="hidden lg:grid items-center justify-center lg:col-span-5 bg-blue-400">
                     <div className="text-white font-poppins flex flex-row justify-between items-center">
-                        <Link to="/" className="underline italic">
+                        <Link to="/admin" className="underline italic">
                             Goto Dashboard
                         </Link>
                         <BackButton color="white" />

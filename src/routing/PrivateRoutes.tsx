@@ -7,11 +7,22 @@ type Props = {
     roles: string;
 };
 
-const PrivateRoutes = (children: any) => {
+ const PrivateRoutes = ({ component: Component }: any) => {
+
+    
     const authed = getToken();
+    
 
     return authed ? (
-        children
+        authed.length > 0 ? (
+            Component
+        ) : (
+            <Navigate
+                to={{
+                    pathname: '/unauthorized',
+                }}
+            />
+        )
     ) : (
         <Navigate
             to={{

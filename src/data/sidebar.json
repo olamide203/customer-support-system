@@ -15,8 +15,8 @@
         "path": "/update-knowledge-base"
     },
     {
-        "title": "add category",
+        "title": "add new category",
         "icon": "/icons/add-category.svg",
-        "path": "/add-category"
+        "path": "/add-new-category"
     }
 ]
