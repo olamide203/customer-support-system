@@ -1,5 +1,4 @@
 import BackButton from '../../components/BackButton';
-
 import Header from '../../components/Header';
 import AdminDialog from '../../components/Notification/AdminDialog';
 
@@ -22,10 +21,8 @@ const ViewRequestDialog = () => {
                 <div>
                     <hr className="my-[30px]" />
                 </div>
-                <div>
-                    <AdminDialog>Ben</AdminDialog>
-                    hhsjhjkasuaseh
-                </div>
+
+                <AdminDialog />
             </div>
         </>
     );
