@@ -14,7 +14,7 @@ const AdminDashboard = () => {
             <div className="grid grid-cols-[1fr_auto] items-center justify-center h-full py-[40px]">
                 <div className="w-full grid items-center justify-center">
                     <div className="w-[500px] mx-auto my-auto">
-                        <AspectRatio ratio={16 / 9}>
+                        <AspectRatio ratio={553 / 302}>
                             <img
                                 src="/undraw-chat-bot.svg"
                                 alt=""
