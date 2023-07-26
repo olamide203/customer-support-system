@@ -10,6 +10,7 @@ import ForgotPassword from './routes/forgot-password';
 import LoginPage from './routes/login';
 import Dashboard from './routes/dashboard';
 import UpdateGeneralKnowledgeBase from './routes/general/update-knowledge-base';
+import AddNewCategory from './routes/general/add-new-category';
 import KnowledgeBasePage from './routes/KnowledgeBase/Page';
 import KnowledgeBaseLayout from './routes/KnowledgeBase/Layout';
 import ComplaintsPage from './routes/KnowledgeBase/complaints/page';
@@ -30,7 +31,10 @@ const router = createBrowserRouter([
                 element: <Dashboard />,
                 index: true,
             },
-
+            {
+                path: 'add-new-category',
+                element: <AddNewCategory />,
+            },
             {
                 path: 'update-knowledge-base',
                 element: <UpdateGeneralKnowledgeBase />,

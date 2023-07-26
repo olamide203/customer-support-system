@@ -14,9 +14,10 @@ import SuccessDialog from './SuccessDialog';
 
 interface DialogProps {
     children: React.ReactNode;
+    successMessage: string;
 }
 
-const Dialog = ({ children }: DialogProps) => {
+const Dialog = ({ children, successMessage }: DialogProps) => {
     const [open, setOpen] = useState(false);
     const toggleOpen = () => setOpen((prev) => !prev);
     const closeDialog = () => setOpen(false);
@@ -41,7 +42,10 @@ const Dialog = ({ children }: DialogProps) => {
                         </p>
                         <div className="flex justify-between">
                             <Action asChild>
-                                <SuccessDialog onClose={closeDialog}>
+                                <SuccessDialog
+                                    onClose={closeDialog}
+                                    message={successMessage}
+                                >
                                     <Button>proceed</Button>
                                 </SuccessDialog>
                             </Action>
