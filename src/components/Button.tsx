@@ -10,6 +10,7 @@ const Button = styled('button', {
     width: 'fit-content',
     height: 'fit-content',
     wordBreak: 'keep-all',
+    whiteSpace: 'nowrap',
     fontFamily: 'Poppins, sans-serif',
     cursor: 'pointer',
     transition: 'all 0.2s ease-in-out',
@@ -45,9 +46,9 @@ const Button = styled('button', {
                 backgroundColor: '$pink',
             },
             adminYellow100: {
-                backgroundColor: "$yellow100",
-                color: "#000",
-                fontSize: '14px'
+                backgroundColor: '$yellow100',
+                color: '#000',
+                fontSize: '14px',
             },
             outline: {
                 backgroundColor: 'transparent',

@@ -33,7 +33,7 @@ const Header = ({ isAdmin }: Props) => (
             </div>
 
             <NavLink
-                to="/notifications"
+                to={isAdmin ? '/admin/notifications' : '/notifications'}
                 type="button"
                 className="relative h-[50px] py-2"
             >

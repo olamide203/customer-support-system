@@ -15,6 +15,8 @@ import KnowledgeBaseLayout from './routes/KnowledgeBase/Layout';
 import ComplaintsPage from './routes/KnowledgeBase/complaints/page';
 import SingleComplaint from './routes/KnowledgeBase/complaints/[id]';
 import NotificationsPage from './routes/notifications';
+import AdminLayout from './routes/admin/layout';
+import AdminKnowledgeBaseLayout from './routes/admin/knowledgeBase/layout';
 import AdminDashboard from './routes/admin/admin-dashboard';
 import AdminNotification from './routes/admin/admin-notification';
 
@@ -78,6 +80,40 @@ const router = createBrowserRouter([
     {
         path: '/login',
         element: <LoginPage />,
+    },
+    {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+            {
+                path: 'dashboard',
+                element: <AdminDashboard />,
+            },
+            {
+                path: 'notifications',
+                element: <NotificationsPage />,
+            },
+            {
+                path: 'knowledge-base',
+                element: <AdminKnowledgeBaseLayout />,
+                children: [
+                    {
+                        path: '',
+                        element: <KnowledgeBasePage />,
+                        children: [
+                            {
+                                element: <ComplaintsPage />,
+                                index: true,
+                            },
+                            {
+                                element: <ComplaintsPage />,
+                                path: 'complaints',
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
     },
     {
         path: '/admin-dashboard',
