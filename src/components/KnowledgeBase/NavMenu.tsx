@@ -30,7 +30,7 @@ const NavMenu = () => {
                         }`
                     }
                 >
-                    complaints
+                    {item.title}
                 </NavLink>
             ))}
         </div>

@@ -24,9 +24,10 @@ function SelectInput({ onChange }: SelectInputProps) {
                     control: (provided, state) => ({
                         ...provided,
                         border: '1px solid #979797',
-                        height: '42px',
+                        height: '4px',
                         width: '80px',
                         outline: 'none',
+                        overflow: 'hidden',
                         '@media (min-width: 768px)': {
                             fontSize: '16px',
                         },
@@ -40,6 +41,7 @@ function SelectInput({ onChange }: SelectInputProps) {
                         backgroundColor: '#021794',
                         height: '40px',
                         borderRadius: '2px',
+                        overflow: 'hidden',
                     }),
                     dropdownIndicator: (provided, state) => ({
                         ...provided,

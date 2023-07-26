@@ -1,8 +1,9 @@
+import { NavLink } from 'react-router-dom';
 import Avatar from './Avatar';
 import Dropdown from './Dropdown';
 
 interface Props {
-    isAdmin: boolean
+    isAdmin: boolean;
 }
 const Header = ({ isAdmin }: Props) => (
     <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
@@ -16,6 +17,7 @@ const Header = ({ isAdmin }: Props) => (
                 Knowledge base
             </h1>
         </div>
+
         <div className="grid gap-3 grid-flow-col items-center justify-center">
             <Avatar fallback="DT" image="/avatar.png" />
             <div className="flex flex-col gap-2 items-center">
@@ -23,21 +25,36 @@ const Header = ({ isAdmin }: Props) => (
                     <span>Welcome,</span>
                     <Dropdown />
                 </div>
-                {isAdmin && <label className="flex w-[100px] mb-2  py-2 justify-center rounded-md bg-blue-900 text-white font-poppins font-medium text-sm">
-                    Admin
-                </label>}
+                {isAdmin && (
+                    <label className="flex w-[100px] mb-2  py-2 justify-center rounded-md bg-blue-900 text-white font-poppins font-medium text-sm">
+                        Admin
+                    </label>
+                )}
             </div>
-            <button type="button" className="relative h-[50px] py-2">
-                <img
-                    src="/notification.svg"
-                    alt=""
-                    className="h-full object-contain"
-                />
-                <span className="absolute text-white -top-1 -right-6 bg-orange rounded-full p-3 font-bold h-[6px] flex items-center justify-center font-poppins">
-                    31
-                </span>
-            </button>
-            </div>
+
+            <NavLink
+                to="/notifications"
+                type="button"
+                className="relative h-[50px] py-2"
+            >
+                {({ isActive }) => (
+                    <>
+                        <img
+                            src="/notification.svg"
+                            alt=""
+                            className="h-full object-contain"
+                        />
+                        <span
+                            className={`absolute text-white -top-1 -right-6 bg-orange rounded-full p-3 font-bold h-[6px] flex items-center justify-center font-poppins ${
+                                isActive ? 'hidden' : 'block'
+                            }`}
+                        >
+                            31
+                        </span>
+                    </>
+                )}
+            </NavLink>
+        </div>
     </header>
 );
 

@@ -14,7 +14,7 @@ const Avatar = ({ fallback, image }: AvatarProps) => {
                 alt={fallback}
             />
             <Fallback
-                className="text-violet11 leading-1 flex h-full w-full items-center justify-center bg-white text-[15px] font-medium"
+                className="font-bold text-neutral-800 leading-1 flex h-full w-full items-center justify-center bg-blue-100 text-[15px]"
                 delayMs={600}
             >
                 {fallback}

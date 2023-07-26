@@ -5,7 +5,7 @@ const Button = styled('button', {
     color: '$neutral100',
     borderRadius: '9999px',
     textTransform: 'capitalize',
-    fontSize: '12px',
+    fontSize: '16px',
     fontWeight: 'bold',
     width: 'fit-content',
     height: 'fit-content',
@@ -53,6 +53,9 @@ const Button = styled('button', {
                 backgroundColor: 'transparent',
                 border: '2px solid $blue400',
                 color: '$blue400',
+                '&:hover': {
+                    color: '$neutral100',
+                },
             },
             admin: {
                 // New "admin" variant
