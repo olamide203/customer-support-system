@@ -6,7 +6,6 @@ import {
     Overlay,
     Title,
     Action,
-    Cancel,
     Content,
 } from '@radix-ui/react-alert-dialog';
 import Button from '../Button';
@@ -14,9 +13,10 @@ import Button from '../Button';
 interface DialogProps {
     children: React.ReactNode;
     onClose: () => void;
+    message: string;
 }
 
-const Dialog = ({ children, onClose }: DialogProps) => {
+const Dialog = ({ children, onClose, message }: DialogProps) => {
     return (
         <Root>
             <Trigger asChild>{children}</Trigger>
@@ -33,8 +33,7 @@ const Dialog = ({ children, onClose }: DialogProps) => {
                             Success!
                         </Title>
                         <p className="text-center text-xs text-neutral-500 tracking-[0.2px]">
-                            You request to update the knowledgebase has b been
-                            successfully sent to the admin for approval.
+                            {message}
                         </p>
                         <div className="flex justify-center">
                             <Action asChild>
