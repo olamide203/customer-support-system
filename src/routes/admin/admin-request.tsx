@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import Card from '../../components/Dashboard/Card';
 import Header from '../../components/Header';
@@ -15,9 +16,9 @@ const AdminRequest = () => {
                             Request
                         </h1>
                     </div>
-                    <span className="text-sm text-blue-400 italic underline font-poppins">
+                    <Link to="/admin-dashboard" className="text-sm text-blue-400 italic underline font-poppins">
                         Goto Dashboard
-                    </span>
+                    </Link>
                 </div>
                 <div>
                     <hr className="my-[30px]" />
@@ -48,6 +49,7 @@ const AdminRequest = () => {
                             message="Admin Joke Silver approved your update request to the knowledge base blabaajabbabababbabbaabbj"
                             time="3 hours ago"
                             link="View Request"
+                            route="/view-request-dialog"
                         />
                     ))}
                 </div>

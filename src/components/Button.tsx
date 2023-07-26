@@ -50,6 +50,19 @@ const Button = styled('button', {
                 color: '#000',
                 fontSize: '14px',
             },
+            adminBlue400: {
+                backgroundColor: '$blue400',
+                fontSize: '12px',
+            },
+            adminOutline: {
+                backgroundColor: 'transparent',
+                border: '2px solid $blue400',
+                color: '$blue400',
+                fontSize: '12px',
+                '&:hover': {
+                    color: '$neutral100'
+                }
+            },
             outline: {
                 backgroundColor: 'transparent',
                 border: '2px solid $blue400',

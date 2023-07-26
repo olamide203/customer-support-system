@@ -21,6 +21,7 @@ import AdminKnowledgeBaseLayout from './routes/admin/knowledgeBase/layout';
 import AdminDashboard from './routes/admin/admin-dashboard';
 import AdminNotification from './routes/admin/admin-notification';
 import ViewRequestDialog from './routes/admin/view-request-dialog';
+import AdminRequest from './routes/admin/admin-request';
 
 const router = createBrowserRouter([
     {
@@ -132,6 +133,10 @@ const router = createBrowserRouter([
     {
         path: '/view-request-dialog',
         element: <ViewRequestDialog />,
+    },
+    {
+        path: '/admin-request',
+        element: <AdminRequest />,
     },
 ]);
 
