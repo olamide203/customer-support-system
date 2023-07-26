@@ -10,7 +10,7 @@ const AdminNotification = () => {
         <>
             <Header isAdmin />
             <div className="mt-[70px] bg-neutral-200 pt-[30px] px-[15vw]">
-                <div className="flex justify-between">
+                <div className="flex justify-between ">
                     <div className="flex gap-3 items-center">
                         <BackButton />
                         <h1 className="font-poppins font-semibold text-neutral-900/80 text-[16px]sm:text-[24px] capitalize">

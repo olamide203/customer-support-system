@@ -24,7 +24,7 @@ const TextArea = ({
         <div className="relative grid gap-2">
             <label
                 htmlFor={name}
-                className="font-poppins text-neutral-900/80 font-semibold px-2 capitalize"
+                className="font-poppins text-neutral-900/80 font-semibold text-[12px] px-2 capitalize"
             >
                 {label}
             </label>

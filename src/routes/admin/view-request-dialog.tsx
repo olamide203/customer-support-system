@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
-
+import Button from '../../components/Button';
 import Header from '../../components/Header';
+import ConfirmationDialog from '../../components/KnowledgeBase/ConfirmationDialog';
 import AdminDialog from '../../components/Notification/AdminDialog';
 
 const ViewRequestDialog = () => {
     return (
         <>
             <Header isAdmin />
-            <div className="mt-[70px] bg-neutral-200 pt-[30px] px-[15vw]">
+            <div className="mt-[70px] min-h-[100vh] bg-neutral-200 pt-[30px] px-[15vw]">
                 <div className="flex justify-between">
                     <div className="flex gap-3 items-center">
                         <BackButton />
@@ -15,16 +17,19 @@ const ViewRequestDialog = () => {
                             Request
                         </h1>
                     </div>
-                    <span className="text-sm text-blue-400 italic underline font-poppins">
+                    <Link
+                        to="/admin-dashboard"
+                        className="text-sm text-blue-400 italic underline font-poppins"
+                    >
                         Goto Dashboard
-                    </span>
+                    </Link>
                 </div>
                 <div>
                     <hr className="my-[30px]" />
                 </div>
-                <div>
-                    <AdminDialog>Ben</AdminDialog>
-                    hhsjhjkasuaseh
+
+                <div className="flex justify-center">
+                    <AdminDialog />
                 </div>
             </div>
         </>

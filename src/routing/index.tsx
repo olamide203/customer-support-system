@@ -28,6 +28,7 @@ import AddNewCategory from '../routes/general/add-new-category';
 import ViewRequestDialog from '../routes/admin/view-request-dialog';
 import AdminLayout from '../routes/admin/layout';
 import AdminKnowledgeBaseLayout from '../routes/admin/knowledgeBase/layout';
+import AdminRequest from '../routes/admin/admin-request';
 
 const NotFound = () => {
     return (
@@ -101,16 +102,13 @@ const Routes = () => {
                                 element={<ComplaintsPage />}
                             />
                         </Route>
-                        <Route
-                            path="complaints/:id"
-                            element={<SingleComplaint />}
-                        />
                     </Route>
 
                     <Route
-                        path="view-request-dialog"
+                        path="view-request-dialog" 
                         element={<ViewRequestDialog />}
                     />
+                    <Route path="request" element={<AdminRequest />} />
                 </Route>
 
                 <Route path="create-user" element={<CreateUser />} />
