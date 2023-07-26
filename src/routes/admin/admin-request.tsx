@@ -16,7 +16,10 @@ const AdminRequest = () => {
                             Request
                         </h1>
                     </div>
-                    <Link to="/admin-dashboard" className="text-sm text-blue-400 italic underline font-poppins">
+                    <Link
+                        to="/admin-dashboard"
+                        className="text-sm text-blue-400 italic underline font-poppins"
+                    >
                         Goto Dashboard
                     </Link>
                 </div>
@@ -44,12 +47,14 @@ const AdminRequest = () => {
                     </div>
                 </div>
                 <div className="flex rounded flex-col items-center rounded-[20px] gap-6 bg-neutral-100  mt-[30px] p-[50px]">
-                    {new Array(20).fill('').map(() => (
+                    {new Array(20).fill('').map((i) => (
                         <NotificationList
                             message="Admin Joke Silver approved your update request to the knowledge base blabaajabbabababbabbaabbj"
                             time="3 hours ago"
                             link="View Request"
                             route="/view-request-dialog"
+                            // route={`/admin/request/${i}`}
+                            key={Math.random()}
                         />
                     ))}
                 </div>
