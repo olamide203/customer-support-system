@@ -88,7 +88,7 @@ const UpdateKnowledgeBase = () => {
                             </>
                         )}
                         <div className="flex justify-center w-full py-8">
-                            <ConfirmationDialog>
+                            <ConfirmationDialog successMessage=" You request to update the knowledgebase has been successfully sent to the admin for approval.">
                                 <Button type="submit">update</Button>
                             </ConfirmationDialog>
                         </div>

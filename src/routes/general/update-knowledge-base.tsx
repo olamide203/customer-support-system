@@ -80,7 +80,7 @@ const UpdateKnowledgeBase = () => {
                             </>
                         )}
                         <div className="flex justify-center w-full py-8">
-                            <ConfirmationDialog>
+                            <ConfirmationDialog successMessage="Your request to create a new category has been successfully sent to the admin for approval">
                                 <Button type="submit">update</Button>
                             </ConfirmationDialog>
                         </div>
