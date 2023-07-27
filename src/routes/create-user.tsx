@@ -32,7 +32,11 @@ const CreateUserPage = () => {
                         <TextInput label="Phone number" name="phone_number" />
                         <EmailInput label="Email" name="email" />
                         <div className="flex flex-row justify-between">
-                            <Button size="medium" color="blue400" type="submit">
+                            <Button
+                                size="medium"
+                                color="adminBlue400"
+                                type="submit"
+                            >
                                 create
                             </Button>
                             <Button size="medium" color="outline" type="button">

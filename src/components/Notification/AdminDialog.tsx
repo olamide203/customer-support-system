@@ -67,7 +67,7 @@ const AdminDialog = () => (
             </div>
             <div className="flex justify-between p-[20px]">
                 <ConfirmationDialog successMessage=" You request to update the knowledgebase has been successfully sent to the admin for approval.">
-                    <Button className="relative" color="adminBlue400">
+                    <Button className="relative w-[144px]" color="adminBlue400">
                         Approve
                     </Button>
                 </ConfirmationDialog>
@@ -76,7 +76,7 @@ const AdminDialog = () => (
                     rejectMessage="Update has been rejected and email has been
                 sent to all stakeholders"
                 >
-                    <Button className="relative" color="outline">
+                    <Button className="relative w-[144px]" color="adminOutline">
                         Reject
                     </Button>
                 </ConfirmationDialog>

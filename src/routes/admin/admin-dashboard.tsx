@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     return (
         <>
             <Header isAdmin />
-            <div className="bg-blue-100 w-[100vw] mt-[70px] pt-[35px] h-[95vh] bg-opacity-30">
+            <div className="bg-blue-100 w-[100vw] pt-[35px] h-[95vh] mt-[-25px] bg-opacity-30">
                 <div className="flex justify-center gap-4">
                     <InfoText text="You have 35 requests awaiting your action" />
                     <InfoText text="You have 35 requests awaiting your action" />

@@ -60,30 +60,28 @@ const Button = styled('button', {
             adminBlue400: {
                 backgroundColor: '$blue400',
                 fontSize: '12px',
+                border: '1px solid $blue400',
+                width: '144px',
             },
             adminOutline: {
                 backgroundColor: 'transparent',
-                border: '2px solid $blue400',
+                border: '1px solid $blue400',
                 color: '$blue400',
+                width: '144px',
                 fontSize: '12px',
-                '&:hover': {
-                    color: '$neutral100'
-                }
-            },
-            outline: {
-                backgroundColor: 'transparent',
-                border: '2px solid $blue400',
-                color: '$blue400',
                 '&:hover': {
                     color: '$neutral100',
                 },
             },
-            admin: {
-                // New "admin" variant
-                color: '#FFF',
+            outline: {
+                backgroundColor: 'transparent',
+                border: '1px solid $blue400',
                 fontSize: '12px',
-                fontWeight: 500,
-                lineHeight: 'normal',
+                width: '144px',
+                color: '$blue400',
+                '&:hover': {
+                    color: '$neutral100',
+                },
             },
         },
     },

@@ -6,7 +6,7 @@ interface Props {
     isAdmin?: boolean;
 }
 const Header = ({ isAdmin }: Props) => (
-    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-5 items-center bg-neutral-100 z-50">
+    <header className="w-screen h-[70px] flex justify-between fixed top-0 px-[30px] lg:px-[50px] py-10 items-center bg-neutral-100 z-50">
         <div className="flex gap-2 lg:gap-4 items-center">
             <img
                 src="/logo.svg"

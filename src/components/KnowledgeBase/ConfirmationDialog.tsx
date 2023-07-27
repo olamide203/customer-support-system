@@ -53,11 +53,14 @@ const Dialog = ({
                                 </p>
                             </div>
                         ) : (
-                            <div className='w-[300px]'>
+                            <div className="w-[300px]">
                                 <Title className="text-neutral-800 m-0 text-[24px] font-semibold mb-[20px]">
                                     Reason for Rejection
                                 </Title>
-                                <TextArea  name='' label='Enter reason for rejection'/>
+                                <TextArea
+                                    name=""
+                                    label="Enter reason for rejection"
+                                />
                             </div>
                         )}
                         <div className="flex justify-between">
@@ -67,7 +70,9 @@ const Dialog = ({
                                         onClose={closeDialog}
                                         message={successMessage}
                                     >
-                                        <Button>proceed</Button>
+                                        <Button color="adminBlue400">
+                                            proceed
+                                        </Button>
                                     </SuccessDialog>
                                 ) : (
                                     <RejectDialog
@@ -84,7 +89,7 @@ const Dialog = ({
                                 <Cancel asChild>
                                     <Button color="outline">cancel</Button>
                                 </Cancel>
-                            ): null}
+                            ) : null}
                         </div>
                     </div>
                 </Content>
