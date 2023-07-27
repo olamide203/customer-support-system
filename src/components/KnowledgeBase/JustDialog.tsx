@@ -11,6 +11,7 @@ import {
 } from '@radix-ui/react-alert-dialog';
 import Button from '../Button';
 import SuccessDialog from './SuccessDialog';
+import { useNavigate } from 'react-router-dom';
 
 interface DialogProps {
     successMessage: string;
@@ -25,6 +26,11 @@ const JustDialog = ({
     toggleVisibility,
     proceed,
 }: DialogProps) => {
+    const navigate = useNavigate();
+    const navigateBack = () => {
+        navigate(-1);
+    };
+
     return (
         <Root open={visible} onOpenChange={toggleVisibility}>
             <Portal>
@@ -46,7 +52,9 @@ const JustDialog = ({
                         <div className="flex justify-between">
                             <Button onClick={() => proceed()}>proceed</Button>
 
-                            <Button color="outline">cancel</Button>
+                            <Button onClick={navigateBack} color="outline">
+                                cancel
+                            </Button>
                         </div>
                     </div>
                 </Content>
