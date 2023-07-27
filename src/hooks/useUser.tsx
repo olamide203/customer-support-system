@@ -19,7 +19,7 @@ async function createCategories(values: any): Promise<any | null> {
 }
 
 async function getCategories(): Promise<any | null> {
-    const { data }: AxiosResponse<any> = await axiosInstance.get(
+    const { data }: AxiosResponse<any> = await axiosInstance.post(
         `/api/categories/all`
     );
     return data;
@@ -46,7 +46,7 @@ export function useCreateCategories(): any {
     });
 }
 
-export function usegetCategories(): any {
+export function useGetCategories(): any {
     return useMutation(() => getCategories(), {
         onSuccess: (res) => {},
         onError: (err: any) => {},
