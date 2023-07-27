@@ -25,7 +25,7 @@ const ForgotPasswordPage = () => {
                         <p className="text-neutral-900/80">
                             Please enter the e-mail linked to your account
                         </p>
-                        <Form className="flex flex-col gap-8">
+                        <form className="flex flex-col gap-8">
                             <EmailInput label="email" name="email" />
 
                             <div className="flex justify-center">
@@ -37,7 +37,7 @@ const ForgotPasswordPage = () => {
                                     proceed
                                 </Button>
                             </div>
-                        </Form>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,47 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import PasswordInput from '../components/Input/Password';
 import TextInput from '../components/Input/Text';
 import Button from '../components/Button';
 import BackButton from '../components/BackButton';
 import Checkbox from '../components/Input/Checkbox';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useRequestSignin } from '../hooks/useUser';
+import { saveToken } from '../hooks/constants/axiosInstance';
+import { ClassicSpinner } from 'react-spinners-kit';
+
+const Schema = Yup.object().shape({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('Password is required'),
+});
+
+const initialValues = {
+    username: '',
+    password: '',
+};
 
 const LoginPage = () => {
+    const navigate = useNavigate();
+    const { data, error, mutate, isLoading } = useRequestSignin();
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema: Schema,
+        onSubmit: (values) => {
+            mutate(values, {
+                onSuccess(res: any) {
+                    if (values.username.toLowerCase() === 'admin') {
+                        saveToken(res.id_token, 'admin_user');
+                        navigate('/admin', { replace: true });
+                    } else if (values.username.toLowerCase() === 'user') {
+                        saveToken(res.id_token, 'regular_user');
+                        navigate('/', { replace: true });
+                    }
+                },
+            });
+        },
+    });
+
     return (
         <div className="min-h-screen flex itmes-center justify-center">
             <div className="h-fit my-auto w-full max-w-screen-md grid grid-cols-12 rounded-[30px] lg:border-[3px] lg:border-blue-400 overflow-hidden">
@@ -27,9 +63,27 @@ const LoginPage = () => {
                         <h2 className="font-poppins font-bold text-2xl text-neutral-800">
                             Sign In
                         </h2>
-                        <Form className="flex flex-col gap-8 w-full">
-                            <TextInput label="username" name="username" />
-                            <PasswordInput label="password" name="password" />
+                        <form
+                            className="flex flex-col gap-8 w-full"
+                            onSubmit={formik.handleSubmit}
+                        >
+                            <TextInput
+                                label="username"
+                                name="username"
+                                onChange={(e) =>
+                                    formik.setFieldValue(
+                                        'username',
+                                        e.target.value
+                                    )
+                                }
+                            />
+                            <PasswordInput
+                                label="password"
+                                name="password"
+                                onChange={(e: any) =>
+                                    formik.setFieldValue('password', e)
+                                }
+                            />
                             <div className="flex items-center justify-between">
                                 <Checkbox label="remember me" />
                                 <Link
@@ -42,13 +96,38 @@ const LoginPage = () => {
                             <div className="flex justify-center">
                                 <Button
                                     size="medium"
-                                    color="blue400"
+                                    color={`${
+                                        !(
+                                            formik.isValid &&
+                                            formik.dirty &&
+                                            !isLoading
+                                        )
+                                            ? 'disabled'
+                                            : 'blue400'
+                                    }`}
                                     type="submit"
+                                    disabled={
+                                        !(
+                                            formik.isValid &&
+                                            formik.dirty &&
+                                            !isLoading
+                                        )
+                                    }
                                 >
-                                    sign in
+                                    {!isLoading && ' sign in'}
+                                    {isLoading && (
+                                        <div className="flex items-center justify-center ">
+                                            <span>Please wait... </span>
+                                            <ClassicSpinner
+                                                color={'white'}
+                                                size={18}
+                                                sizeUnit={'px'}
+                                            />
+                                        </div>
+                                    )}
                                 </Button>
                             </div>
-                        </Form>
+                        </form>
                     </div>
                 </div>
             </div>

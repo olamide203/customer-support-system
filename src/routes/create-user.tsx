@@ -25,7 +25,7 @@ const CreateUserPage = () => {
                     <h2 className="font-poppins font-bold text-2xl text-neutral-800">
                         Create User
                     </h2>
-                    <Form className="max-w-[400px] w-full flex flex-col gap-4 p-3 lg:p-0">
+                    <form className="max-w-[400px] w-full flex flex-col gap-4 p-3 lg:p-0">
                         <TextInput label="Firstname" name="firstname" />
                         <TextInput label="Lastname" name="lastname" />
                         <TextInput label="Username" name="username" />
@@ -39,7 +39,7 @@ const CreateUserPage = () => {
                                 reset
                             </Button>
                         </div>
-                    </Form>
+                    </form>
                 </div>
             </div>
         </div>

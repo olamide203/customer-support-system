@@ -4,9 +4,17 @@ interface TextAreaProps {
     name: string;
     placeholder?: string;
     label: string;
+    onChange?: any;
+    value?: any;
 }
 
-const TextArea = ({ name, placeholder, label }: TextAreaProps) => {
+const TextArea = ({
+    name,
+    placeholder,
+    label,
+    onChange,
+    value: data,
+}: TextAreaProps) => {
     const [value, setValue] = useState('');
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(e.target.value);
@@ -25,9 +33,9 @@ const TextArea = ({ name, placeholder, label }: TextAreaProps) => {
                 id={name}
                 placeholder={placeholder}
                 required
-                value={value}
-                onChange={handleChange}
-                className="w-full border border-neutral-300 rounded-lg p-2 px-4 text-neutral-900  outline-none placeholder:text-grey-2 focus:border-neutral-900 sm:text-base h-[110px]"
+                value={data || value}
+                onChange={onChange || handleChange}
+                className="w-full border border-neutral-300 rounded-lg p-2 px-4 text-neutral-900 outline-none placeholder:text-grey-2 focus:border-neutral-900 sm:text-base h-[110px]"
             />
         </div>
     );

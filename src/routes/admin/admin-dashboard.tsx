@@ -1,6 +1,7 @@
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import InfoText from '../../components/Text/InfoText';
+import LogOut from '../../helpers/Logout';
 import { useNavigate } from 'react-router';
 
 const AdminDashboard = () => {
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
                     <div className="flex flex-col justify-center items-center md:w-2/5 w-full">
                         <div className="flex flex-col gap-14">
                             <Button
-                                onClick={() => navigate('/admin-request')}
+                                onClick={() => navigate('/admin/request')}
                                 className="relative"
                                 size="medium"
                                 color="adminYellow100"
@@ -50,9 +51,12 @@ const AdminDashboard = () => {
                                 GOTO KNOWLEDGE BASE
                                 <div className="absolute -bottom-8 left-20 w-[17vw] h-0.5 bg-red"></div>
                             </Button>
-                            <Button 
-                            onClick={() => navigate('/login')}
-                            className="relative" color="adminYellow100">
+
+                            <Button
+                                className="relative"
+                                color="adminYellow100"
+                                onClick={() => LogOut()}
+                            >
                                 LOGOUT
                             </Button>
                         </div>

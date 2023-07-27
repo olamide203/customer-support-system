@@ -36,6 +36,13 @@ const Button = styled('button', {
             blue400: {
                 backgroundColor: '$blue400',
             },
+
+            disabled: {
+                backgroundColor: '#999999',
+                '&:hover': {
+                    backgroundColor: '#999999',
+                },
+            },
             blue300: {
                 backgroundColor: '$blue300',
             },
