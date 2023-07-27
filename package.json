@@ -12,6 +12,9 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@emotion/core": "^11.0.0",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
         "@radix-ui/react-alert-dialog": "^1.0.4",
         "@radix-ui/react-aspect-ratio": "^1.0.3",
         "@radix-ui/react-avatar": "^1.0.3",
