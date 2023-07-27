@@ -8,6 +8,7 @@ interface SelectInputProps {
     options: Option[];
     label?: string | null;
     name: string;
+    value?: 'string';
     onValueChange?: (val: string) => void;
 }
 
@@ -16,11 +17,14 @@ const SelectInput = ({
     label,
     name,
     onValueChange,
+    value: data,
 }: SelectInputProps) => {
     const [value, setValue] = useState('');
     useEffect(() => {
-        if (onValueChange) onValueChange(value);
-    }, [value, onValueChange]);
+        if (onValueChange) {
+            onValueChange(value);
+        }
+    }, [value]);
     return (
         <>
             {label && (
@@ -36,7 +40,7 @@ const SelectInput = ({
                     <TextInput
                         name="categories"
                         readOnly
-                        value={value}
+                        value={data || value}
                         className="capitalize"
                     />
                     <button

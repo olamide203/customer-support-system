@@ -1,24 +1,22 @@
 /* eslint-disable react/no-array-index-key */
-import { useState, useEffect } from 'react';
-import { Form } from 'react-router-dom';
-import { motion, useForceUpdate } from 'framer-motion';
-import Button from '../../components/Button';
-import ConfirmationDialog from '../../components/KnowledgeBase/ConfirmationDialog';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { RingSpinner } from 'react-spinners-kit';
 import BackButton from '../../components/BackButton';
+import Button from '../../components/Button';
+import Checkbox from '../../components/Input/Checkbox';
 import TextInput from '../../components/Input/Text';
 import TextArea from '../../components/Input/Textarea';
-import SelectInput from '../../components/Select/Index';
-import Checkbox from '../../components/Input/Checkbox';
-import subjects from '../../data/subjects';
-import { useCreateCategories } from '../../hooks/useUser';
 import JustDialog from '../../components/KnowledgeBase/JustDialog';
+import SuccessModal from '../../components/KnowledgeBase/SuccessModal';
+import SelectInput from '../../components/Select/Index';
+import subjects from '../../data/subjects';
 import {
     hasEmptyValue,
     hasEmptyValueExcept,
     hasEmptyValueInArray,
 } from '../../helpers/ObjectEmpty';
-import SuccessModal from '../../components/KnowledgeBase/SuccessModal';
-import { RingSpinner } from 'react-spinners-kit';
+import { useCreateCategories } from '../../hooks/useUser';
 
 const UpdateKnowledgeBase = () => {
     const [subject, setSubject] = useState('');
@@ -91,11 +89,10 @@ const UpdateKnowledgeBase = () => {
         setVisible(true);
     };
 
-
-    const handleProceed =() =>{
+    const handleProceed = () => {
         setVisible(false);
-        submit()
-    }
+        submit();
+    };
 
     const submit = () => {
         const comments = moreContent.map(
@@ -173,13 +170,7 @@ const UpdateKnowledgeBase = () => {
                                 layout
                                 className="flex bg-neutral-200 px-[55px] py-[34px] items-center justify-center flex-col gap-10 w-full max-w-[510px] mx-auto"
                             >
-                                <div
-                                    className="w-full grid gap-4 min-w-[300px]"
-                                    // onSubmit={(event) => {
-                                    //     console.log('ffff\n', event.target);
-                                    //     return false;
-                                    // }}
-                                >
+                                <div className="w-full grid gap-4 min-w-[300px]">
                                     <TextInput
                                         name="category_name"
                                         label="category name"
@@ -232,16 +223,6 @@ const UpdateKnowledgeBase = () => {
                                                 }
                                                 value={fields.subjectDes}
                                             />
-
-                                            {/* {Array.from({ length: responseCount }).map(
-                                    () => (
-                                        <TextArea
-                                            name={name}
-                                            label={name}
-                                            key={Math.random()}
-                                        />
-                                    )
-                                )} */}
 
                                             {moreContent.map(
                                                 (item: any, index: any) => {
@@ -299,7 +280,7 @@ const UpdateKnowledgeBase = () => {
                                             toggleVisibility={() =>
                                                 setVisible(false)
                                             }
-                                            proceed = {() => handleProceed()}
+                                            proceed={() => handleProceed()}
                                         />
 
                                         <SuccessModal
