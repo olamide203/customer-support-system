@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRequestSignin } from '../hooks/useUser';
 import { saveToken } from '../hooks/constants/axiosInstance';
+import { ClassicSpinner } from 'react-spinners-kit';
 
 const Schema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
@@ -97,14 +98,34 @@ const LoginPage = () => {
                                 <Button
                                     size="medium"
                                     color={`${
-                                        !(formik.isValid && formik.dirty)
+                                        !(
+                                            formik.isValid &&
+                                            formik.dirty &&
+                                            !isLoading
+                                        )
                                             ? 'disabled'
                                             : 'blue400'
                                     }`}
                                     type="submit"
-                                    disabled={!(formik.isValid && formik.dirty)}
+                                    disabled={
+                                        !(
+                                            formik.isValid &&
+                                            formik.dirty &&
+                                            !isLoading
+                                        )
+                                    }
                                 >
-                                    sign in
+                                    {!isLoading && ' sign in'}
+                                    {isLoading && (
+                                        <div className="flex items-center justify-center ">
+                                            <span>Please wait... </span>
+                                            <ClassicSpinner
+                                                color={'white'}
+                                                size={18}
+                                                sizeUnit={'px'}
+                                            />
+                                        </div>
+                                    )}
                                 </Button>
                             </div>
                         </form>
