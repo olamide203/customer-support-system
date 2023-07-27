@@ -27,9 +27,8 @@ export default PrivateRoutes;
 
 export const PrivateRoutesAdmin = () => {
     const user = getUser();
-
     return user ? (
-        user === 'admin_User' ? (
+        user === 'admin_user' ? (
             <Outlet />
         ) : (
             <Navigate

@@ -7,11 +7,11 @@ import Button from '../../components/Button';
 import TextArea from '../../components/Input/Textarea';
 import JustDialog from '../../components/KnowledgeBase/JustDialog';
 import SuccessModal from '../../components/KnowledgeBase/SuccessModal';
-import SelectInput from '../../components/Select/Index';
+import SelectInput, { SelectInput2 } from '../../components/Select/Index';
 import categories from '../../data/categories';
 import subjects from '../../data/subjects';
 import { hasEmptyValue, hasEmptyValueInArray } from '../../helpers/ObjectEmpty';
-import { useUpdateCategories, usegetCategories } from '../../hooks/useUser';
+import { useUpdateCategories, useGetCategories } from '../../hooks/useUser';
 
 const UpdateKnowledgeBase = () => {
     const [subject, setSubject] = useState('');
@@ -26,13 +26,15 @@ const UpdateKnowledgeBase = () => {
             comment: '',
         },
     ]);
+
+    const [currentSelection, setCurrentSelection] = useState<any>({});
     const [fields, setfields] = useState<any>({
         category_name: 'Checking for description',
         subcategory_name: 'Checking for descriptionkyc-sub',
         classification: '',
         subjectDes: '',
     });
-    const { data, error, mutate, isLoading } = usegetCategories();
+    const { data, error, mutate, isLoading } = useGetCategories();
     const { mutate: updateMutate, isLoading: updateLoading } =
         useUpdateCategories();
 
@@ -98,13 +100,18 @@ const UpdateKnowledgeBase = () => {
             })
         );
 
+        const subData =
+            currentSelection.subcategories.length === 0
+                ? {}
+                : {
+                      id: '',
+                      description: '',
+                  };
+
         const dataToSend = {
-            id: 38,
-            description: 'Checking for description',
-            subCategory: {
-                id: 37,
-                description: 'Checking for descriptionkyc-sub',
-            },
+            id: currentSelection.parent.id,
+            description: currentSelection.parent?.description,
+            subCategory: subData,
             issueDTO: {
                 classification: fields.classification.toUpperCase(),
                 description: fields.subjectDes,
@@ -130,6 +137,29 @@ const UpdateKnowledgeBase = () => {
         //     },
         // };
 
+        // {
+        //     "id": 47,
+        //     "code": null,
+        //     "description": "",
+        //     "subcategories": [],
+        //     "parent": {
+        //         "id": 46,
+        //         "code": null,
+        //         "description": "Test 201",
+        //         "parentId": null,
+        //         "categoryId": null
+        //     },
+        //     "category": {
+        //         "id": null,
+        //         "code": null,
+        //         "description": null,
+        //         "parentId": null,
+        //         "categoryId": null
+        //     },
+        //     "parentId": 46,
+        //     "categoryId": null
+        // }
+
         updateMutate(dataToSend, {
             onSuccess: (response: any) => {
                 setResponseCount(1);
@@ -149,6 +179,7 @@ const UpdateKnowledgeBase = () => {
                 setSubject('');
 
                 setSuccess(true);
+                setCurrentSelection({});
             },
         });
     };
@@ -185,17 +216,14 @@ const UpdateKnowledgeBase = () => {
                             className="flex bg-neutral-200 px-[55px] py-[34px] items-center justify-center flex-col gap-10 w-full max-w-[510px] mx-auto"
                         >
                             <div className="w-full grid gap-4 min-w-[300px]">
-                                <SelectInput
+                                <SelectInput2
                                     name="category"
                                     label="category"
-                                    options={categories}
+                                    options={data}
                                     onValueChange={(e) =>
-                                        setfields({
-                                            ...fields,
-                                            category_name: e,
-                                        })
+                                        setCurrentSelection(e)
                                     }
-                                    value={fields?.category_name}
+                                    value={currentSelection?.description}
                                 />
                                 <SelectInput
                                     name="subject"
