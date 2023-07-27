@@ -23,7 +23,7 @@ import SingleComplaint from '../routes/KnowledgeBase/complaints/[id]';
 import NotificationsPage from '../routes/notifications';
 import AdminDashboard from '../routes/admin/admin-dashboard';
 import AdminNotification from '../routes/admin/admin-notification';
-import PrivateRoutes from './PrivateRoutes';
+import PrivateRoutes, { PrivateRoutesAdmin } from './PrivateRoutes';
 import AddNewCategory from '../routes/general/add-new-category';
 import ViewRequestDialog from '../routes/admin/view-request-dialog';
 import AdminLayout from '../routes/admin/layout';
@@ -81,37 +81,39 @@ const Routes = () => {
                     />
                 </Route>
 
-                <Route path="/admin" element={<AdminLayout />}>
-                    <Route path="dashboard" element={<AdminDashboard />} />
-                    <Route
-                        path="notifications"
-                        element={<AdminNotification />}
-                    />
-
-                    <Route
-                        element={<AdminKnowledgeBaseLayout />}
-                        path="knowledge-base"
-                    >
+                <Route element={<PrivateRoutesAdmin />}>
+                    <Route path="/admin" element={<AdminLayout />}>
+                        <Route path="dashboard" element={<AdminDashboard />} />
                         <Route
+                            path="notifications"
+                            element={<AdminNotification />}
+                        />
+
+                        <Route
+                            element={<AdminKnowledgeBaseLayout />}
                             path="knowledge-base"
-                            element={<KnowledgeBasePage />}
                         >
-                            <Route element={<ComplaintsPage />} index />
                             <Route
-                                path="complaints"
-                                element={<ComplaintsPage />}
-                            />
+                                path="knowledge-base"
+                                element={<KnowledgeBasePage />}
+                            >
+                                <Route element={<ComplaintsPage />} index />
+                                <Route
+                                    path="complaints"
+                                    element={<ComplaintsPage />}
+                                />
+                            </Route>
                         </Route>
+
+                        <Route
+                            path="view-request-dialog"
+                            element={<ViewRequestDialog />}
+                        />
+                        <Route path="request" element={<AdminRequest />} />
                     </Route>
 
-                    <Route
-                        path="view-request-dialog" 
-                        element={<ViewRequestDialog />}
-                    />
-                    <Route path="request" element={<AdminRequest />} />
+                    <Route path="create-user" element={<CreateUser />} />
                 </Route>
-
-                <Route path="create-user" element={<CreateUser />} />
             </Route>
 
             <Route path="reset-password" element={<ResetPassword />} />
