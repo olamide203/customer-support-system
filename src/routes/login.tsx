@@ -35,7 +35,7 @@ const LoginPage = () => {
                         saveToken(res.id_token, 'admin_user');
 
                         navigate('/admin', { replace: true });
-                    } else if (values.username.toLowerCase() === 'user') {
+                    } else  {
                         saveToken(res.id_token, 'regular_user');
                         navigate('/', { replace: true });
                     }
