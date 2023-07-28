@@ -4,9 +4,17 @@ interface EmailInputProps {
     name: string;
     placeholder?: string;
     label: string;
+    onChange?: (e: any) => void;
+    value?: string;
 }
 
-function EmailInput({ name, placeholder, label }: EmailInputProps) {
+function EmailInput({
+    name,
+    placeholder,
+    label,
+    onChange,
+    value: data,
+}: EmailInputProps) {
     const [value, setValue] = useState('');
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -26,8 +34,8 @@ function EmailInput({ name, placeholder, label }: EmailInputProps) {
                 type="email"
                 placeholder={placeholder}
                 required
-                value={value}
-                onChange={handleChange}
+                value={data || value}
+                onChange={onChange || handleChange}
                 className="h-[50px] w-full border border-neutral-300 rounded-lg p-2 px-4 text-neutral-900 outline-none placeholder:text-grey-2 focus:border-neutral-900 sm:text-base"
             />
         </div>

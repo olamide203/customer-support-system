@@ -52,7 +52,7 @@ const JustDialog = ({
                         <div className="flex justify-between">
                             <Button onClick={() => proceed()}>proceed</Button>
 
-                            <Button onClick={navigateBack} color="outline">
+                            <Button onClick={toggleVisibility} color="outline">
                                 cancel
                             </Button>
                         </div>

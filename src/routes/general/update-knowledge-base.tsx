@@ -305,7 +305,7 @@ const UpdateKnowledgeBase = () => {
                                     />
 
                                     <SuccessModal
-                                        message=" You request to update the knowledgebase has been successfully sent to the admin for approval."
+                                        message="Your request to create a new category has been successfully sent to the admin for approval"
                                         visible={success}
                                         toggleVisibility={() =>
                                             setSuccess(false)

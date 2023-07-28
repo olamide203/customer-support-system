@@ -10,6 +10,14 @@ async function requestSignin(values: any): Promise<any | null> {
     return data;
 }
 
+async function createUser(values: any): Promise<any | null> {
+    const { data }: AxiosResponse<any> = await axiosInstance.post(
+        `/api/admin/users`,
+        values
+    );
+    return data;
+}
+
 async function createCategories(values: any): Promise<any | null> {
     const { data }: AxiosResponse<any> = await axiosInstance.post(
         `/api/categories/create`,
@@ -55,6 +63,13 @@ export function useGetCategories(): any {
 
 export function useUpdateCategories(): any {
     return useMutation((values) => updateCategories(values), {
+        onSuccess: (res) => {},
+        onError: (err: any) => {},
+    });
+}
+
+export function useCreateUser(): any {
+    return useMutation((value) => createUser(value), {
         onSuccess: (res) => {},
         onError: (err: any) => {},
     });
