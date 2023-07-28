@@ -8,6 +8,8 @@ interface KnowledgeBaseItemProps {
     title: string;
     description: string;
     created_at: string;
+    comments?: any;
+    path?: string;
 }
 
 const KnowledgeBaeItem = ({
@@ -15,6 +17,8 @@ const KnowledgeBaeItem = ({
     title,
     description,
     created_at,
+    comments,
+    path,
 }: KnowledgeBaseItemProps) => {
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
@@ -63,7 +67,8 @@ const KnowledgeBaeItem = ({
             <p className="font-poppins text-xs text-neutral-400">
                 {description}{' '}
                 <Link
-                    to={`/knowledge-base/complaints/${id}`}
+                    to={`/knowledge-base/${path}/${id}`}
+                    state={{ list: comments, title: title }}
                     className="font-bold text-neutral-800 px-2"
                 >
                     See more

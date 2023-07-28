@@ -1,18 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import { BsDot } from 'react-icons/bs';
+import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
-import complaints from '../../../data/complaints.json';
+import { BsDot } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
+import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
 
-const SingleComplaint = (props: any) => {
+const SingleEnquire = (props: any) => {
     let { state } = useLocation();
+    const navigate = useNavigate();
+
     const { title = '', list = [] } = state || {};
 
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         return () => clearTimeout(timerRef.current);
@@ -33,13 +32,11 @@ const SingleComplaint = (props: any) => {
             minute: 'numeric',
         });
     };
-
     useEffect(() => {
-        if (title.length === 0) {
+        if (title.length === 0 ) {
             navigate('/knowledge-base', { replace: true });
         }
     }, [title]);
-
     return (
         <div className="mx-auto w-full max-w-[888px] rounded-[30px] bg-white h-full p-10 flex gap-5 flex-col">
             <div className="flex flex-row justify-between">
@@ -64,18 +61,18 @@ const SingleComplaint = (props: any) => {
                     </CopiedToast>
                 </div>
             </div>
-            {list?.map((complaint: any) => (
+            {list?.map((enquires: any) => (
                 <div
                     className="grid grid-cols-[auto_1fr] gap-5"
-                    key={complaint.id}
+                    key={enquires.id}
                 >
                     <BsDot />
                     <div className="grid gap-1">
                         <p className="font-poppins text-base text-neutral-400">
-                            {complaint.comment}
+                            {enquires.comment}
                         </p>
                         <p className="italic text-[14px] font-semibold text-neutral-400">
-                            {toDateString(complaint.createdDate)}
+                            {toDateString(enquires.createdDate)}
                         </p>
                     </div>
                 </div>
@@ -84,4 +81,4 @@ const SingleComplaint = (props: any) => {
     );
 };
 
-export default SingleComplaint;
+export default SingleEnquire;

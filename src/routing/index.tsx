@@ -29,6 +29,8 @@ import ViewRequestDialog from '../routes/admin/view-request-dialog';
 import AdminLayout from '../routes/admin/layout';
 import AdminKnowledgeBaseLayout from '../routes/admin/knowledgeBase/layout';
 import AdminRequest from '../routes/admin/admin-request';
+import SingleEnquire from '../routes/KnowledgeBase/enquires/[id]';
+import SingleRequest from '../routes/KnowledgeBase/requests/[id]';
 
 const NotFound = () => {
     return (
@@ -72,6 +74,15 @@ const Routes = () => {
                         <Route
                             path="complaints/:id"
                             element={<SingleComplaint />}
+                        />
+
+                        <Route
+                            path="enquires/:id"
+                            element={<SingleEnquire />}
+                        />
+                        <Route
+                            path="requests/:id"
+                            element={<SingleRequest />}
                         />
                     </Route>
 

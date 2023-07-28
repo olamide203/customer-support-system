@@ -1,18 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
-import { BsDot } from 'react-icons/bs';
+import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
-import complaints from '../../../data/complaints.json';
+import { BsDot } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
+import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
 
-const SingleComplaint = (props: any) => {
+const SingleRequest = (props: any) => {
     let { state } = useLocation();
+    const navigate = useNavigate();
     const { title = '', list = [] } = state || {};
 
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         return () => clearTimeout(timerRef.current);
@@ -35,7 +33,7 @@ const SingleComplaint = (props: any) => {
     };
 
     useEffect(() => {
-        if (title.length === 0) {
+        if (title.length === 0 ) {
             navigate('/knowledge-base', { replace: true });
         }
     }, [title]);
@@ -64,18 +62,18 @@ const SingleComplaint = (props: any) => {
                     </CopiedToast>
                 </div>
             </div>
-            {list?.map((complaint: any) => (
+            {list?.map((request: any) => (
                 <div
                     className="grid grid-cols-[auto_1fr] gap-5"
-                    key={complaint.id}
+                    key={request.id}
                 >
                     <BsDot />
                     <div className="grid gap-1">
                         <p className="font-poppins text-base text-neutral-400">
-                            {complaint.comment}
+                            {request.comment}
                         </p>
                         <p className="italic text-[14px] font-semibold text-neutral-400">
-                            {toDateString(complaint.createdDate)}
+                            {toDateString(request.createdDate)}
                         </p>
                     </div>
                 </div>
@@ -84,4 +82,4 @@ const SingleComplaint = (props: any) => {
     );
 };
 
-export default SingleComplaint;
+export default SingleRequest;

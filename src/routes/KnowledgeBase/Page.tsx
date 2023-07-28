@@ -3,6 +3,11 @@ import { Root as Separator } from '@radix-ui/react-separator';
 import SearchIniput from '../../components/KnowledgeBase/SearchInput';
 import CategorySelect from '../../components/KnowledgeBase/CategorySelect';
 import NavMenu from '../../components/KnowledgeBase/NavMenu';
+import ComplaintsPage from './complaints/page';
+import { useEffect, useState } from 'react';
+import EnquiresPage from './enquires/page';
+import RequestsPage from './requests/page';
+import { useGetCategories } from '../../hooks/useUser';
 
 const catgegories = [
     {
@@ -28,6 +33,19 @@ const catgegories = [
 ];
 
 const KnowledgeBasePage = () => {
+    const [state, setState] = useState<Number>(1);
+    const [search, setSearch] = useState<string>('');
+    const [recordsNum, setRecords] = useState<any>(0);
+
+    const { data, error, mutate, isLoading } = useGetCategories();
+
+    // useEffect(() => {
+    //     mutate();
+    // }, []);
+
+    useEffect(() => {
+        setSearch('');
+    }, [state]);
     return (
         <>
             <div className="bg-white flex flex-col items-center justify-center w-full p-[20px]">
@@ -39,12 +57,17 @@ const KnowledgeBasePage = () => {
                     <h3 className="text-xs text-neutral-500">
                         Total Number of Records
                     </h3>
-                    <span className="font-bold text-blue-400">10</span>
+                    <span className="font-bold text-blue-400">
+                        {recordsNum}
+                    </span>
                 </div>
             </div>
             <div className="bg-white w-full h-full p-10 grid gap-6">
                 <div className="w-full max-w-[400px] mx-auto">
-                    <SearchIniput />
+                    <SearchIniput
+                        onClick={(e: any) => setSearch(e)}
+                        value={search}
+                    />
                 </div>
                 <div className="w-full grid justify-end">
                     <CategorySelect
@@ -53,8 +76,28 @@ const KnowledgeBasePage = () => {
                         name="category"
                     />
                 </div>
-                <NavMenu />
-                <Outlet />
+                <NavMenu state={state} onClick={(e: any) => setState(e)} />
+
+                {state === 1 && (
+                    <ComplaintsPage
+                        search={search}
+                        numOfRecords={(e: any) => setRecords(e)}
+                    />
+                )}
+                {state === 2 && (
+                    <EnquiresPage
+                        search={search}
+                        numOfRecords={(e: any) => setRecords(e)}
+                    />
+                )}
+                {state === 3 && (
+                    <RequestsPage
+                        search={search}
+                        numOfRecords={(e: any) => setRecords(e)}
+                    />
+                )}
+
+                {/* <Outlet /> */}
             </div>
         </>
     );

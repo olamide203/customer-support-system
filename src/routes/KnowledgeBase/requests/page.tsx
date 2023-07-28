@@ -5,7 +5,7 @@ import KnowledgeBaeItem from '../../../components/KnowledgeBase/Item';
 import Pagination from '../../../components/KnowledgeBase/Pagination';
 import { useGetIssues } from '../../../hooks/useUser';
 
-const ComplaintsPage = (deatils: any) => {
+const RequestsPage = (deatils: any) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const { data, error, mutate, isLoading } = useGetIssues();
@@ -19,11 +19,11 @@ const ComplaintsPage = (deatils: any) => {
     };
 
     useEffect(() => {
-        var filter = { classification: 'COMPLAINT' };
+        var filter = { classification: 'REQUEST' };
         mutate(filter);
     }, []);
 
-    const complaintsData = () => {
+    const requestData = () => {
         return data?.filter((listItem: any) =>
             listItem?.issue?.description
                 ?.toLowerCase()
@@ -34,7 +34,6 @@ const ComplaintsPage = (deatils: any) => {
     useEffect(() => {
         deatils.numOfRecords(data?.length);
     }, [data]);
-    // console.log('gsgggs\n', complaintsData());
 
     return (
         <>
@@ -45,15 +44,15 @@ const ComplaintsPage = (deatils: any) => {
                     </div>
                 )} */}
 
-                {complaintsData()?.map((complaint: any) => (
+                {requestData()?.map((request: any) => (
                     <KnowledgeBaeItem
-                        id={complaint?.issue?.id}
-                        title={complaint?.issue?.description}
-                        description={complaint?.comments[0]?.comment}
-                        created_at={complaint?.issue?.createdDate}
-                        key={complaint?.issue?.id}
-                        comments={complaint?.comments}
-                        path={'complaints'}
+                        id={request?.issue?.id}
+                        title={request?.issue?.description}
+                        description={request?.comments[0]?.comment}
+                        created_at={request?.issue?.createdDate}
+                        key={request?.issue?.id}
+                        comments={request?.comments}
+                        path={'requests'}
                     />
                 ))}
                 {isLoading && <ClassicSpinner color={'#07178e'} size={17} />}
@@ -71,4 +70,4 @@ const ComplaintsPage = (deatils: any) => {
     );
 };
 
-export default ComplaintsPage;
+export default RequestsPage;

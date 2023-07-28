@@ -8,10 +8,9 @@ import TextArea from '../../components/Input/Textarea';
 import JustDialog from '../../components/KnowledgeBase/JustDialog';
 import SuccessModal from '../../components/KnowledgeBase/SuccessModal';
 import SelectInput, { SelectInput2 } from '../../components/Select/Index';
-import categories from '../../data/categories';
 import subjects from '../../data/subjects';
 import { hasEmptyValue, hasEmptyValueInArray } from '../../helpers/ObjectEmpty';
-import { useUpdateCategories, useGetCategories } from '../../hooks/useUser';
+import { useGetCategories, useUpdateCategories } from '../../hooks/useUser';
 
 const UpdateKnowledgeBase = () => {
     const [subject, setSubject] = useState('');
