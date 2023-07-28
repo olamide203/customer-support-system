@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { axiosInstance } from './constants/axiosInstance';
+import { ErrorToast } from '../helpers/Toast';
 
 async function requestSignin(values: any): Promise<any | null> {
     const { data }: AxiosResponse<any> = await axiosInstance.post(
@@ -43,28 +44,52 @@ async function updateCategories(value: any): Promise<any | null> {
 export function useRequestSignin(): any {
     return useMutation((value) => requestSignin(value), {
         onSuccess: (res) => {},
-        onError: (err: any) => {},
+        onError: (err: any) => {
+            if (err?.response) {
+                ErrorToast(err?.response?.data?.detail);
+            } else {
+                ErrorToast(err.message);
+            }
+        },
     });
 }
 
 export function useCreateCategories(): any {
     return useMutation((value) => createCategories(value), {
         onSuccess: (res) => {},
-        onError: (err: any) => {},
+        onError: (err: any) => {
+            if (err?.response) {
+                ErrorToast(err?.response?.data?.detail);
+            } else {
+                ErrorToast(err.message);
+            }
+        },
     });
 }
 
 export function useGetCategories(): any {
     return useMutation(() => getCategories(), {
         onSuccess: (res) => {},
-        onError: (err: any) => {},
+        onError: (err: any) => {
+            if (err?.response) {
+                ErrorToast(err?.response?.data?.detail);
+            } else {
+                ErrorToast(err.message);
+            }
+        },
     });
 }
 
 export function useUpdateCategories(): any {
     return useMutation((values) => updateCategories(values), {
         onSuccess: (res) => {},
-        onError: (err: any) => {},
+        onError: (err: any) => {
+            if (err?.response) {
+                ErrorToast(err?.response?.data?.detail);
+            } else {
+                ErrorToast(err.message);
+            }
+        },
     });
 }
 
