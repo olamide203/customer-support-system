@@ -109,8 +109,8 @@ const UpdateKnowledgeBase = () => {
                   };
 
         const dataToSend = {
-            id: currentSelection.parent.id,
-            description: currentSelection.parent?.description,
+            id: currentSelection.id,
+            description: currentSelection.description,
             subCategory: subData,
             issueDTO: {
                 classification: fields.classification.toUpperCase(),
@@ -305,7 +305,7 @@ const UpdateKnowledgeBase = () => {
                                     />
 
                                     <SuccessModal
-                                        message="You request to update the knowledgebase has b
+                                        message="You request to update the knowledgebase has
                                         been successfully sent to the admin for
                                         approval"
                                         visible={success}

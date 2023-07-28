@@ -61,9 +61,9 @@ const LoginPage = () => {
                     <img src="/heros/login.svg" alt="" />
                 </div>
                 <div className="col-span-12 lg:col-span-7 flex flex-col items-center justify-center gap-4 py-10 relative">
-                    <div className="absolute top-10 left-10">
+                    {/* <div className="absolute top-10 left-10">
                         <BackButton />
-                    </div>
+                    </div> */}
                     <img src="/logo.svg" alt="" />
                     <h1 className="font-sacramento text-3xl font-bold capitalize text-red">
                         knowledge base
