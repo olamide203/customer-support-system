@@ -17,7 +17,7 @@ const AdminRequest = () => {
                         </h1>
                     </div>
                     <Link
-                        to="/admin-dashboard"
+                        to="/admin"
                         className="text-sm text-blue-400 italic underline font-poppins"
                     >
                         Goto Dashboard
