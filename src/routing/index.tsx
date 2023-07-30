@@ -104,11 +104,7 @@ const Routes = () => {
                             element={<AdminKnowledgeBaseLayout />}
                             path="knowledge-base"
                         >
-                            <Route
-                                path="knowledge-base"
-                                element={<KnowledgeBasePage />}
-                            >
-                                <Route element={<ComplaintsPage />} index />
+                            <Route path="" element={<KnowledgeBasePage />}>
                                 <Route
                                     path="complaints"
                                     element={<ComplaintsPage />}

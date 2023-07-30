@@ -14,7 +14,7 @@ function AdminLayout() {
     return (
         <>
             <Header isAdmin />
-            <div className="max-w-screen mt-[70px] pt-[35px] min-h-[calc(100vh_-_70px)] overflow-x-hidden overflow-y-hidden grid items-center justify-center bg-neutral-200">
+            <div className="max-w-screen  pt-[35px] min-h-[calc(100vh_-_70px)] overflow-x-hidden overflow-y-hidden grid  justify-center bg-neutral-200">
                 <Outlet />
             </div>
         </>
