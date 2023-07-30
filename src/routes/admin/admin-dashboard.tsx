@@ -3,18 +3,50 @@ import Header from '../../components/Header';
 import InfoText from '../../components/Text/InfoText';
 import LogOut from '../../helpers/Logout';
 import { useNavigate } from 'react-router';
+import { useGetRequest } from '../../hooks/useAdmin';
+import { useEffect } from 'react';
+import { RingSpinner } from 'react-spinners-kit';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
+    const { data, error, mutate, isLoading } = useGetRequest();
+    useEffect(() => {
+        var filter = {
+            all: 'all',
+            'seven days': null,
+            today: null,
+            endDate: null,
+            'start date': null,
+        };
+        mutate(filter);
+    }, []);
 
     return (
         <>
             <Header isAdmin />
-            <div className="bg-blue-100 w-[100vw] pt-[35px] h-[95vh] mt-[-25px] bg-opacity-30">
+            <div className="bg-blue-100 w-[100vw] pt-[30px] h-[95vh] mt-[-25px] bg-opacity-30 mt-[47px]">
+                {isLoading && (
+                    <div className="ms-[25px]">
+                        <RingSpinner color={'#07178e'} size={20} />
+                    </div>
+                )}
+
                 <div className="flex justify-center gap-4">
-                    <InfoText text="You have 35 requests awaiting your action" />
-                    <InfoText text="You have 35 requests awaiting your action" />
-                    <InfoText text="You have 35 requests awaiting your action" />
+                    <InfoText
+                        text={`You have ${
+                            data ? data?.length : 0
+                        } requests awaiting your action`}
+                    />
+                    <InfoText
+                        text={`You have ${
+                            data ? data?.length : 0
+                        } requests awaiting your action`}
+                    />
+                    <InfoText
+                        text={`You have ${
+                            data ? data?.length : 0
+                        } requests awaiting your action`}
+                    />
                 </div>
                 <div className="flex h-full">
                     <div
@@ -44,7 +76,9 @@ const AdminDashboard = () => {
                                 <div className="absolute -bottom-8 left-18 w-[15vw] h-0.5 bg-red"></div>
                             </Button>
                             <Button
-                                onClick={() => navigate('/admin/knowledge-base')}
+                                onClick={() =>
+                                    navigate('/admin/knowledge-base')
+                                }
                                 className="relative"
                                 color="adminYellow100"
                             >

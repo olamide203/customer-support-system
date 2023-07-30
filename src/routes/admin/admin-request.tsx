@@ -4,30 +4,74 @@ import Card from '../../components/Dashboard/Card';
 import Header from '../../components/Header';
 import NotificationList from '../../components/List/NotificationList';
 import { useGetRequest } from '../../hooks/useAdmin';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { RingSpinner } from 'react-spinners-kit';
 
 const AdminRequest = () => {
     const { data, error, mutate, isLoading } = useGetRequest();
 
-    useEffect(() => {
-        var filter = {
-            all: 'all',
-            'seven days': null,
-            today: null,
-            endDate: null,
-            'start date': null,
-        };
-        mutate(filter);
-    }, []);
+    const [filterBy, setFilterBy] = useState<{
+        all: string | null;
+        'seven days': string | null;
+        today: string | null;
+        endDate?: string | null;
+        'start date'?: string | null;
+    }>({
+        all: 'all',
+        'seven days': null,
+        today: null,
+        endDate: null,
+        'start date': null,
+    });
 
-    // {
-    //     "all":"all",
-    //     "seven days":"sevendays",
-    //     "today":"today",
-    //     "endDate":"2023-07-26",
-    //     "start date":2023-07-10"
-    //     }
+    useEffect(() => {
+        mutate(filterBy);
+    }, [filterBy]);
+
+    const [startDate, setStartDate] = useState<string>('');
+    const [endDate, setEndDate] = useState<string>('');
+    const [minDate, setMinDate] = useState<string>('');
+
+    const updateFilter = (value: string, type?: string, fieldName?: string) => {
+        if (type === 'filter') {
+            if (value === 'sevendays') {
+                setFilterBy({
+                    ...filterBy,
+                    all: null,
+                    'seven days': 'sevendays',
+                    today: null,
+                });
+            } else {
+                setFilterBy({
+                    ...filterBy,
+                    all: 'all',
+                    'seven days': null,
+                    today: null,
+                });
+            }
+        } else if (type === 'date') {
+            if (fieldName === 'start') {
+                setEndDate('');
+                const dateObject = new Date(value);
+                dateObject.setDate(dateObject.getDate() + 1);
+                const updatedDateValue = dateObject.toISOString().slice(0, 10);
+                setStartDate(value);
+                setMinDate(updatedDateValue);
+            } else if (fieldName === 'end') {
+                setEndDate(value);
+                if (startDate.length !== 0) {
+                    setFilterBy({
+                        all: null,
+                        'seven days': null,
+                        today: null,
+                        endDate: value,
+                        'start date': startDate,
+                    });
+                }
+            }
+        }
+    };
+
     return (
         <>
             <Header isAdmin />
@@ -52,9 +96,12 @@ const AdminRequest = () => {
                 </div>
                 <div className="flex gap-4 font-poppins items-center justify-end">
                     <span className="font-semibold">Filter By:</span>
-                    <select className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent">
-                        <option>Last 7 days</option>
-                        <option>Last month</option>
+                    <select
+                        className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent"
+                        onChange={(e) => updateFilter(e.target.value, 'filter')}
+                    >
+                        <option value={'sevendays'}>Last 7 days</option>
+                        <option value={'all'}>Last month</option>
                     </select>
                     <div className="flex gap-2 items-center">
                         <span className="font-semibold">Date Range:</span>
@@ -62,11 +109,20 @@ const AdminRequest = () => {
                         <input
                             className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent"
                             type="date"
+                            onChange={(e) =>
+                                updateFilter(e.target.value, 'date', 'start')
+                            }
+                            value={startDate}
                         />
                         <span>To</span>
                         <input
                             className="border-[1px] p-2 rounded-[5px] border-neutral-400 bg-transparent"
                             type="date"
+                            value={endDate}
+                            onChange={(e) =>
+                                updateFilter(e.target.value, 'date', 'end')
+                            }
+                            min={minDate}
                         />
                     </div>
                 </div>
