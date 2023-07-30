@@ -24,10 +24,14 @@ const RequestsPage = (deatils: any) => {
     }, []);
 
     const requestData = () => {
-        return data?.filter((listItem: any) =>
-            listItem?.issue?.description
-                ?.toLowerCase()
-                .includes(deatils?.search.toLowerCase())
+        return data?.filter(
+            (listItem: any) =>
+                listItem?.issue?.description
+                    ?.toLowerCase()
+                    .includes(deatils?.search.toLowerCase()) &&
+                listItem?.issue?.classification
+                    ?.toLowerCase()
+                    .includes(deatils?.category.toLowerCase())
         );
     };
 

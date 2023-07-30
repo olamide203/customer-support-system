@@ -35,6 +35,7 @@ const catgegories = [
 const KnowledgeBasePage = () => {
     const [state, setState] = useState<Number>(1);
     const [search, setSearch] = useState<string>('');
+    const [category, setCategory] = useState<string>('');
     const [recordsNum, setRecords] = useState<any>(0);
 
     const { data, error, mutate, isLoading } = useGetCategories();
@@ -46,6 +47,14 @@ const KnowledgeBasePage = () => {
     useEffect(() => {
         setSearch('');
     }, [state]);
+
+    const categoryList = Array.from(
+        new Set(data?.map((item: any) => item))
+    ).map((item: any) => ({
+        value: item?.description,
+        label: item?.description,
+    }));
+
     return (
         <>
             <div className="bg-white flex flex-col items-center justify-center w-full p-[20px]">
@@ -71,9 +80,16 @@ const KnowledgeBasePage = () => {
                 </div>
                 <div className="w-full grid justify-end">
                     <CategorySelect
-                        options={catgegories}
+                        options={[
+                            {
+                                value: '',
+                                label: 'All',
+                            },
+                            ...categoryList,
+                        ]}
                         label="Filter By Category:"
                         name="category"
+                        onChange={(e: any) => setCategory(e.value)}
                     />
                 </div>
                 <NavMenu state={state} onClick={(e: any) => setState(e)} />
@@ -82,18 +98,21 @@ const KnowledgeBasePage = () => {
                     <ComplaintsPage
                         search={search}
                         numOfRecords={(e: any) => setRecords(e)}
+                        category={category}
                     />
                 )}
                 {state === 2 && (
                     <EnquiresPage
                         search={search}
                         numOfRecords={(e: any) => setRecords(e)}
+                        category={category}
                     />
                 )}
                 {state === 3 && (
                     <RequestsPage
                         search={search}
                         numOfRecords={(e: any) => setRecords(e)}
+                        category={category}
                     />
                 )}
 
