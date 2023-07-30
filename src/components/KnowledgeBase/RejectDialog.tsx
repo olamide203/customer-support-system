@@ -11,7 +11,7 @@ import {
 import Button from '../Button';
 
 interface DialogProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     onClose: () => void;
     message: string;
 }

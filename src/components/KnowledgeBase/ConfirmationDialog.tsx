@@ -19,6 +19,8 @@ interface DialogProps {
     successMessage?: string;
     success?: boolean;
     rejectMessage?: string;
+    toggleVisibility?: () => void;
+    proceed: () => void;
 }
 
 const Dialog = ({
@@ -26,6 +28,8 @@ const Dialog = ({
     successMessage = '',
     success = true,
     rejectMessage = '',
+    toggleVisibility,
+    proceed,
 }: DialogProps) => {
     const [open, setOpen] = useState(false);
     const toggleOpen = () => setOpen((prev) => !prev);
@@ -66,28 +70,28 @@ const Dialog = ({
                         <div className="flex justify-between">
                             <Action asChild>
                                 {success ? (
-                                    <SuccessDialog
-                                        onClose={closeDialog}
-                                        message={successMessage}
+                                    <Button
+                                        color="adminBlue400"
+                                        onClick={() => proceed()}
                                     >
-                                        <Button color="adminBlue400">
-                                            proceed
-                                        </Button>
-                                    </SuccessDialog>
+                                        proceed
+                                    </Button>
                                 ) : (
-                                    <RejectDialog
-                                        onClose={closeDialog}
-                                        message={rejectMessage}
-                                    >
-                                        <div className="flex justify-center w-full">
-                                            <Button>Ok</Button>
-                                        </div>
-                                    </RejectDialog>
+                                    <div className="flex justify-center w-full">
+                                        <Button onClick={() => proceed()}>
+                                            Ok
+                                        </Button>
+                                    </div>
                                 )}
                             </Action>
                             {success ? (
                                 <Cancel asChild>
-                                    <Button color="outline">cancel</Button>
+                                    <Button
+                                        color="outline"
+                                        onClick={toggleVisibility}
+                                    >
+                                        cancel
+                                    </Button>
                                 </Cancel>
                             ) : null}
                         </div>

@@ -44,7 +44,7 @@ const AdminDashboard = () => {
                                 <div className="absolute -bottom-8 left-18 w-[15vw] h-0.5 bg-red"></div>
                             </Button>
                             <Button
-                                onClick={() => navigate('/knowledge-base')}
+                                onClick={() => navigate('/admin/knowledge-base')}
                                 className="relative"
                                 color="adminYellow100"
                             >

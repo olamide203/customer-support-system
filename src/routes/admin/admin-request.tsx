@@ -3,11 +3,35 @@ import BackButton from '../../components/BackButton';
 import Card from '../../components/Dashboard/Card';
 import Header from '../../components/Header';
 import NotificationList from '../../components/List/NotificationList';
+import { useGetRequest } from '../../hooks/useAdmin';
+import { useEffect } from 'react';
+import { RingSpinner } from 'react-spinners-kit';
 
 const AdminRequest = () => {
+    const { data, error, mutate, isLoading } = useGetRequest();
+
+    useEffect(() => {
+        var filter = {
+            all: 'all',
+            'seven days': null,
+            today: null,
+            endDate: null,
+            'start date': null,
+        };
+        mutate(filter);
+    }, []);
+
+    // {
+    //     "all":"all",
+    //     "seven days":"sevendays",
+    //     "today":"today",
+    //     "endDate":"2023-07-26",
+    //     "start date":2023-07-10"
+    //     }
     return (
         <>
             <Header isAdmin />
+
             <div className="mt-[70px] bg-neutral-200 pt-[30px] px-[15vw]">
                 <div className="flex justify-between">
                     <div className="flex gap-3 items-center">
@@ -47,16 +71,31 @@ const AdminRequest = () => {
                     </div>
                 </div>
                 <div className="flex rounded flex-col items-center rounded-[20px] gap-6 bg-neutral-100  mt-[30px] p-[50px]">
-                    {new Array(20).fill('').map((i) => (
-                        <NotificationList
-                            message="Admin Joke Silver approved your update request to the knowledge base blabaajabbabababbabbaabbj"
-                            time="3 hours ago"
-                            link="View Request"
-                            route="/admin/view-request-dialog"
-                            // route={`/admin/request/${i}`}
-                            key={Math.random()}
-                        />
-                    ))}
+                    {isLoading ? (
+                        <div className="">
+                            <RingSpinner color={'#07178e'} size={17} />{' '}
+                        </div>
+                    ) : (
+                        data?.map((item: any, index: any) => {
+                            const initials = item?.issue?.createdBy
+                                .split(' ')
+                                .map((word: string) => word.charAt(0))
+                                .join('');
+
+                            return (
+                                <NotificationList
+                                    message={item?.issue?.description}
+                                    time={item?.issue?.createdDate}
+                                    link="View Request"
+                                    route="/admin/view-request-dialog"
+                                    // route={`/admin/request/${i}`}
+                                    key={index}
+                                    initials={initials}
+                                    data={item}
+                                />
+                            );
+                        })
+                    )}
                 </div>
             </div>
         </>

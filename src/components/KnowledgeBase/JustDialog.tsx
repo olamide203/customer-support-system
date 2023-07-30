@@ -30,7 +30,7 @@ const JustDialog = ({
     const navigateBack = () => {
         navigate(-1);
     };
-
+ 
     return (
         <Root open={visible} onOpenChange={toggleVisibility}>
             <Portal>
