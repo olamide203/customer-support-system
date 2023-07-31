@@ -29,7 +29,7 @@ const ComplaintsPage = (deatils: any) => {
                 listItem?.issue?.description
                     ?.toLowerCase()
                     .includes(deatils?.search.toLowerCase()) &&
-                    listItem?.category?.description
+                    listItem?.category?.parent?.description
                     ?.toLowerCase()
                     .includes(deatils?.category.toLowerCase())
         );
@@ -38,7 +38,6 @@ const ComplaintsPage = (deatils: any) => {
     useEffect(() => {
         deatils.numOfRecords(data?.length);
     }, [data]);
-    // console.log('gsgggs\n', complaintsData());
 
     return (
         <>

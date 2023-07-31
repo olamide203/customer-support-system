@@ -29,7 +29,7 @@ const EnquiresPage = (deatils: any) => {
                 listItem?.issue?.description
                     ?.toLowerCase()
                     .includes(deatils?.search.toLowerCase()) &&
-                    listItem?.category?.description
+                    listItem?.category?.parent?.description
                     ?.toLowerCase()
                     .includes(deatils?.category.toLowerCase())
         );

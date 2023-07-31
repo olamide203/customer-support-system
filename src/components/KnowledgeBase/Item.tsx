@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import CopiedToast from './CopiedToast';
+import { getUser } from '../../hooks/constants/axiosInstance';
 
 interface KnowledgeBaseItemProps {
     id: number;
@@ -37,9 +38,9 @@ const KnowledgeBaeItem = ({
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
     });
+
+    const user = getUser();
     return (
         <div className="grid gap-3">
             <div className="flex flex-row justify-between">
@@ -67,7 +68,9 @@ const KnowledgeBaeItem = ({
             <p className="font-poppins text-xs text-neutral-400">
                 {description}{' '}
                 <Link
-                    to={`/knowledge-base/${path}/${id}`}
+                    to={`${
+                        user === 'admin_user' ? '/admin/' : '/'
+                    }knowledge-base/${path}/${id}`}
                     state={{ list: comments, title: title }}
                     className="font-bold text-neutral-800 px-2"
                 >

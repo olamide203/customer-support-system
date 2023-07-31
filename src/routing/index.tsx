@@ -105,11 +105,25 @@ const Routes = () => {
                             path="knowledge-base"
                         >
                             <Route path="" element={<KnowledgeBasePage />}>
+                                <Route element={<ComplaintsPage />} index />
                                 <Route
                                     path="complaints"
                                     element={<ComplaintsPage />}
                                 />
                             </Route>
+                            <Route
+                                path="complaints/:id"
+                                element={<SingleComplaint />}
+                            />
+
+                            <Route
+                                path="enquires/:id"
+                                element={<SingleEnquire />}
+                            />
+                            <Route
+                                path="requests/:id"
+                                element={<SingleRequest />}
+                            />
                         </Route>
 
                         <Route

@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #f4f4f4; */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -27,4 +27,9 @@
     align-items: center;
     background-color: #f4f4f4;
     z-index: 1;
+}
+
+.dropdown-scroll {
+    overflow: scroll;
+    height: 250px;
 }

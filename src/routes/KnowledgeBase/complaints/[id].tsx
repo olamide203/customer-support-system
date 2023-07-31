@@ -4,6 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
 import complaints from '../../../data/complaints.json';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getUser } from '../../../hooks/constants/axiosInstance';
 
 const SingleComplaint = (props: any) => {
     let { state } = useLocation();
@@ -29,14 +30,19 @@ const SingleComplaint = (props: any) => {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
+            // hour: 'numeric',
+            // minute: 'numeric',
         });
     };
 
     useEffect(() => {
         if (title.length === 0) {
-            navigate('/knowledge-base', { replace: true });
+            const user = getUser();
+            if (user === 'admin_user') {
+                navigate('/admin/knowledge-base', { replace: true });
+            } else {
+                navigate('/knowledge-base', { replace: true });
+            }
         }
     }, [title]);
 

@@ -3,6 +3,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { BsDot } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CopiedToast from '../../../components/KnowledgeBase/CopiedToast';
+import { getUser } from '../../../hooks/constants/axiosInstance';
 
 const SingleRequest = (props: any) => {
     let { state } = useLocation();
@@ -27,14 +28,19 @@ const SingleRequest = (props: any) => {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
+            // hour: 'numeric',
+            // minute: 'numeric',
         });
     };
 
     useEffect(() => {
-        if (title.length === 0 ) {
-            navigate('/knowledge-base', { replace: true });
+        if (title.length === 0) {
+            const user = getUser();
+            if (user === 'admin_user') {
+                navigate('/admin/knowledge-base', { replace: true });
+            } else {
+                navigate('/knowledge-base', { replace: true });
+            }
         }
     }, [title]);
 

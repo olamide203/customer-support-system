@@ -57,6 +57,7 @@ const RequestsPage = (deatils: any) => {
                         key={request?.issue?.id}
                         comments={request?.comments}
                         path={'requests'}
+                        
                     />
                 ))}
                 {isLoading && <ClassicSpinner color={'#07178e'} size={17} />}
