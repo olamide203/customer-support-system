@@ -40,16 +40,36 @@ const KnowledgeBasePage = () => {
 
     const { data, error, mutate, isLoading } = useGetCategories();
 
-    // useEffect(() => {
-    //     mutate();
-    // }, []);
+    useEffect(() => {
+        mutate();
+    }, []);
 
     useEffect(() => {
         setSearch('');
-    }, [state]);
+    }, [state, category]);
+
+    // const categoryList = Array.from(
+    //     new Set(data?.map((item: any) => item))
+    // ).map((item: any) => ({
+    //     value: item?.description,
+    //     label: item?.description,
+    // }));
 
     const categoryList = Array.from(
-        new Set(data?.map((item: any) => item))
+        new Set(
+            data
+                ?.map((item: any) => {
+                    if (
+                        item?.description === null ||
+                        item?.description === undefined ||
+                        item?.description === ''
+                    ) {
+                        return null;
+                    }
+                    return item;
+                })
+                .filter((item: any) => item !== null)
+        )
     ).map((item: any) => ({
         value: item?.description,
         label: item?.description,

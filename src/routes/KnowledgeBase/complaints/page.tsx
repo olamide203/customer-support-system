@@ -29,7 +29,7 @@ const ComplaintsPage = (deatils: any) => {
                 listItem?.issue?.description
                     ?.toLowerCase()
                     .includes(deatils?.search.toLowerCase()) &&
-                listItem?.issue?.classification
+                    listItem?.category?.description
                     ?.toLowerCase()
                     .includes(deatils?.category.toLowerCase())
         );

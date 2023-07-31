@@ -69,7 +69,6 @@ const AdminDialog = () => {
                         enquiry:
                     </span>
                     <p className="text-[14px] font-semibold capitalize">
-                        My bank account is dormant, what can i do?
                         {info?.issue?.description}
                     </p>
                 </div>
