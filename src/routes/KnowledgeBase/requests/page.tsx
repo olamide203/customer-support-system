@@ -5,7 +5,7 @@ import KnowledgeBaeItem from '../../../components/KnowledgeBase/Item';
 import Pagination from '../../../components/KnowledgeBase/Pagination';
 import { useGetIssues } from '../../../hooks/useUser';
 
-const RequestsPage = (deatils: any) => {
+const RequestsPage = (details: any) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const { data, error, mutate, isLoading } = useGetIssues();
@@ -24,20 +24,42 @@ const RequestsPage = (deatils: any) => {
     }, []);
 
     const requestData = () => {
-        return data?.filter(
-            (listItem: any) =>
+        if (details?.search?.length === 0 && details?.category.length === 0) {
+            return data?.map((item: any) => item);
+        } else if (details?.search !== 0 && details?.category.length === 0) {
+            return data?.filter((listItem: any) =>
                 listItem?.issue?.description
                     ?.toLowerCase()
-                    .includes(deatils?.search.toLowerCase()) &&
-                    listItem?.category?.description
+                    .includes(details?.search.toLowerCase())
+            );
+        } else if (
+            details?.search.length === 0 &&
+            details?.category.length !== 0
+        ) {
+            return data?.filter((listItem: any) =>
+                listItem?.category?.parent?.description
                     ?.toLowerCase()
-                    .includes(deatils?.category.toLowerCase())
-        );
+                    .includes(details?.category.toLowerCase())
+            );
+        } else {
+            return data?.filter(
+                (listItem: any) =>
+                    listItem?.issue?.description
+                        ?.toLowerCase()
+                        .includes(details?.search.toLowerCase()) &&
+                    listItem?.category?.parent?.description
+                        ?.toLowerCase()
+                        .includes(details?.category.toLowerCase())
+            );
+        }
     };
 
     useEffect(() => {
-        deatils.numOfRecords(data?.length);
+        details.numOfRecords(data?.length);
     }, [data]);
+    const start = currentPage === 1 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+    const stop = currentPage * itemsPerPage;
+    // console.log(requestData(),details?.search.length === 0 && details?.category === '' );
 
     return (
         <>
@@ -48,28 +70,29 @@ const RequestsPage = (deatils: any) => {
                     </div>
                 )} */}
 
-                {requestData()?.map((request: any) => (
-                    <KnowledgeBaeItem
-                        id={request?.issue?.id}
-                        title={request?.issue?.description}
-                        description={request?.comments[0]?.comment}
-                        created_at={request?.issue?.createdDate}
-                        key={request?.issue?.id}
-                        comments={request?.comments}
-                        path={'requests'}
-                        
-                    />
-                ))}
+                {requestData()
+                    ?.splice(start, stop)
+                    ?.map((request: any) => (
+                        <KnowledgeBaeItem
+                            id={request?.issue?.id}
+                            title={request?.issue?.description}
+                            description={request?.comments[0]?.comment}
+                            created_at={request?.issue?.createdDate}
+                            key={request?.issue?.id}
+                            comments={request?.comments}
+                            path={'requests'}
+                        />
+                    ))}
                 {isLoading && <ClassicSpinner color={'#07178e'} size={17} />}
             </div>
             <Separator className="bg-neutral-400 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px my-[4px]" />
             <Pagination
-                pageCount={5}
+                pageCount={requestData()?.length / itemsPerPage}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
                 perPage={itemsPerPage}
                 onChangeItemsPerPage={changeItemsPerPage}
-                totalItems={50}
+                totalItems={requestData()?.length}
             />
         </>
     );

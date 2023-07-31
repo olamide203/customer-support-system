@@ -5,7 +5,7 @@ import KnowledgeBaeItem from '../../../components/KnowledgeBase/Item';
 import Pagination from '../../../components/KnowledgeBase/Pagination';
 import { useGetIssues } from '../../../hooks/useUser';
 
-const EnquiresPage = (deatils: any) => {
+const EnquiresPage = (details: any) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const { data, error, mutate, isLoading } = useGetIssues();
@@ -24,22 +24,43 @@ const EnquiresPage = (deatils: any) => {
     }, []);
 
     const enquiresData = () => {
-        return data?.filter(
-            (listItem: any) =>
+        if (details?.search?.length === 0 && details?.category.length === 0) {
+            return data?.map((item: any) => item);
+        } else if (details?.search !== 0 && details?.category.length === 0) {
+            return data?.filter((listItem: any) =>
                 listItem?.issue?.description
                     ?.toLowerCase()
-                    .includes(deatils?.search.toLowerCase()) &&
-                    listItem?.category?.parent?.description
+                    .includes(details?.search.toLowerCase())
+            );
+        } else if (
+            details?.search.length === 0 &&
+            details?.category.length !== 0
+        ) {
+            return data?.filter((listItem: any) =>
+                listItem?.category?.parent?.description
                     ?.toLowerCase()
-                    .includes(deatils?.category.toLowerCase())
-        );
+                    .includes(details?.category.toLowerCase())
+            );
+        } else {
+            return data?.filter(
+                (listItem: any) =>
+                    listItem?.issue?.description
+                        ?.toLowerCase()
+                        .includes(details?.search.toLowerCase()) &&
+                    listItem?.category?.parent?.description
+                        ?.toLowerCase()
+                        .includes(details?.category.toLowerCase())
+            );
+        }
     };
 
-    
-
     useEffect(() => {
-        deatils.numOfRecords(data?.length);
+        details.numOfRecords(data?.length);
     }, [data]);
+    const start = currentPage === 1 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+    const stop = currentPage * itemsPerPage;
+    // console.log(enquiresData(),details?.search.length === 0 && details?.category === '' );
+
     return (
         <>
             <div className="flex flex-col gap-6 py-4 max-w-screen-md">
@@ -49,27 +70,29 @@ const EnquiresPage = (deatils: any) => {
                     </div>
                 )} */}
 
-                {enquiresData()?.map((enquire: any) => (
-                    <KnowledgeBaeItem
-                        id={enquire?.issue?.id}
-                        title={enquire?.issue?.description}
-                        description={enquire?.comments[0]?.comment}
-                        created_at={enquire?.issue?.createdDate}
-                        key={enquire?.issue?.id}
-                        comments={enquire?.comments}
-                        path={'enquires'}
-                    />
-                ))}
+                {enquiresData()
+                    ?.splice(start, stop)
+                    ?.map((enquires: any) => (
+                        <KnowledgeBaeItem
+                            id={enquires?.issue?.id}
+                            title={enquires?.issue?.description}
+                            description={enquires?.comments[0]?.comment}
+                            created_at={enquires?.issue?.createdDate}
+                            key={enquires?.issue?.id}
+                            comments={enquires?.comments}
+                            path={'enquires'}
+                        />
+                    ))}
                 {isLoading && <ClassicSpinner color={'#07178e'} size={17} />}
             </div>
             <Separator className="bg-neutral-400 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px my-[4px]" />
             <Pagination
-                pageCount={5}
+                pageCount={enquiresData()?.length / itemsPerPage}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
                 perPage={itemsPerPage}
                 onChangeItemsPerPage={changeItemsPerPage}
-                totalItems={50}
+                totalItems={enquiresData()?.length}
             />
         </>
     );

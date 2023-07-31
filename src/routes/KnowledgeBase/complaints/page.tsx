@@ -5,7 +5,7 @@ import KnowledgeBaeItem from '../../../components/KnowledgeBase/Item';
 import Pagination from '../../../components/KnowledgeBase/Pagination';
 import { useGetIssues } from '../../../hooks/useUser';
 
-const ComplaintsPage = (deatils: any) => {
+const ComplaintsPage = (details: any) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const { data, error, mutate, isLoading } = useGetIssues();
@@ -24,20 +24,42 @@ const ComplaintsPage = (deatils: any) => {
     }, []);
 
     const complaintsData = () => {
-        return data?.filter(
-            (listItem: any) =>
+        if (details?.search?.length === 0 && details?.category.length === 0) {
+            return data?.map((item: any) => item);
+        } else if (details?.search !== 0 && details?.category.length === 0) {
+            return data?.filter((listItem: any) =>
                 listItem?.issue?.description
                     ?.toLowerCase()
-                    .includes(deatils?.search.toLowerCase()) &&
-                    listItem?.category?.parent?.description
+                    .includes(details?.search.toLowerCase())
+            );
+        } else if (
+            details?.search.length === 0 &&
+            details?.category.length !== 0
+        ) {
+            return data?.filter((listItem: any) =>
+                listItem?.category?.parent?.description
                     ?.toLowerCase()
-                    .includes(deatils?.category.toLowerCase())
-        );
+                    .includes(details?.category.toLowerCase())
+            );
+        } else {
+            return data?.filter(
+                (listItem: any) =>
+                    listItem?.issue?.description
+                        ?.toLowerCase()
+                        .includes(details?.search.toLowerCase()) &&
+                    listItem?.category?.parent?.description
+                        ?.toLowerCase()
+                        .includes(details?.category.toLowerCase())
+            );
+        }
     };
 
     useEffect(() => {
-        deatils.numOfRecords(data?.length);
+        details.numOfRecords(data?.length);
     }, [data]);
+    const start = currentPage === 1 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+    const stop = currentPage * itemsPerPage;
+    // console.log(complaintsData(),details?.search.length === 0 && details?.category === '' );
 
     return (
         <>
@@ -48,27 +70,29 @@ const ComplaintsPage = (deatils: any) => {
                     </div>
                 )} */}
 
-                {complaintsData()?.map((complaint: any) => (
-                    <KnowledgeBaeItem
-                        id={complaint?.issue?.id}
-                        title={complaint?.issue?.description}
-                        description={complaint?.comments[0]?.comment}
-                        created_at={complaint?.issue?.createdDate}
-                        key={complaint?.issue?.id}
-                        comments={complaint?.comments}
-                        path={'complaints'}
-                    />
-                ))}
+                {complaintsData()
+                    ?.splice(start, stop)
+                    ?.map((complaint: any) => (
+                        <KnowledgeBaeItem
+                            id={complaint?.issue?.id}
+                            title={complaint?.issue?.description}
+                            description={complaint?.comments[0]?.comment}
+                            created_at={complaint?.issue?.createdDate}
+                            key={complaint?.issue?.id}
+                            comments={complaint?.comments}
+                            path={'complaints'}
+                        />
+                    ))}
                 {isLoading && <ClassicSpinner color={'#07178e'} size={17} />}
             </div>
             <Separator className="bg-neutral-400 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px my-[4px]" />
             <Pagination
-                pageCount={5}
+                pageCount={complaintsData()?.length / itemsPerPage}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
                 perPage={itemsPerPage}
                 onChangeItemsPerPage={changeItemsPerPage}
-                totalItems={50}
+                totalItems={complaintsData()?.length}
             />
         </>
     );
