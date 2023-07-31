@@ -9,7 +9,7 @@ const SingleEnquire = (props: any) => {
     let { state } = useLocation();
     const navigate = useNavigate();
 
-    const { title = '', list = [] } = state || {};
+    const { title = '', list = [] , dateCreated = ''} = state || {};
 
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
@@ -78,7 +78,7 @@ const SingleEnquire = (props: any) => {
                             {enquires.comment}
                         </p>
                         <p className="italic text-[14px] font-semibold text-neutral-400">
-                            {toDateString(enquires.createdDate)}
+                            {toDateString(dateCreated)}
                         </p>
                     </div>
                 </div>

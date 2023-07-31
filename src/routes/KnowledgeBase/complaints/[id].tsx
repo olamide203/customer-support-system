@@ -8,7 +8,7 @@ import { getUser } from '../../../hooks/constants/axiosInstance';
 
 const SingleComplaint = (props: any) => {
     let { state } = useLocation();
-    const { title = '', list = [] } = state || {};
+    const { title = '', list = [], dateCreated = '' } = state || {};
 
     const [open, setOpen] = useState(false);
     const timerRef = useRef(0);
@@ -81,7 +81,7 @@ const SingleComplaint = (props: any) => {
                             {complaint.comment}
                         </p>
                         <p className="italic text-[14px] font-semibold text-neutral-400">
-                            {toDateString(complaint.createdDate)}
+                            {toDateString(dateCreated)}
                         </p>
                     </div>
                 </div>

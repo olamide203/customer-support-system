@@ -49,7 +49,7 @@ const KnowledgeBaeItem = ({
                 </h2>
                 <div className="flex flex-row gap-2">
                     <CopiedToast open={open} onOpenChange={setOpen}>
-                        <CopyToClipboard text={description}>
+                        <CopyToClipboard text={title}>
                             <button
                                 type="button"
                                 className="grid items-center justify-center aspect-square bg-[#FDE7E8] rounded active:bg-pink/60 h-[35px] w-[35px] border border-[#CCC]"
@@ -71,7 +71,7 @@ const KnowledgeBaeItem = ({
                     to={`${
                         user === 'admin_user' ? '/admin/' : '/'
                     }knowledge-base/${path}/${id}`}
-                    state={{ list: comments, title: title }}
+                    state={{ list: comments, title: title, dateCreated: created_at }}
                     className="font-bold text-neutral-800 px-2"
                 >
                     See more
