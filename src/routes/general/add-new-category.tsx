@@ -109,8 +109,8 @@ const UpdateKnowledgeBase = () => {
             issueDTO: {
                 classification: fields.classification.toUpperCase(),
                 description: fields.subjectDes,
+                commentDTOS: comments,
             },
-            commentDTOS: comments,
         };
 
         mutate(dataToSend, {
